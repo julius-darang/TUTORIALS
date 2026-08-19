@@ -1,44 +1,77 @@
 # Polymath Tutorials
 
-Educational slide-based tutorials by **[Julius Darang](https://github.com/juliusdarang)** — from zero to AI developer.
+Educational slide-based tutorials by **[Julius Darang](https://github.com/julius-darang)**, focused on AI agents, coding workflows, and practical developer foundations.
 
-## What's Inside
+This repository is the source workspace for tutorial Markdown, Marp decks, product documentation, and generated publishing artifacts. The canonical GitHub repository is [`julius-darang/TUTORIALS`](https://github.com/julius-darang/TUTORIALS).
 
-**~120 files** across ~93 MARP slides and ~25 PDF exports, covering 13 subject areas:
+## Current inventory
 
-| Subject | Location | Status |
-|---------|----------|--------|
-| **Zero to AI Builder** — flagship curriculum | `ZERO TO AI BUILDER/` | ~98% done |
-| **Claude Code** — tool-specific deep dives | `CLAUDE CODE/` | ~100% done |
-| **AI Agents Levels** — agent architecture | `AI AGENTS LEVELS/` | ~50% done |
-| **CLI Mastery** | `MASTERING CLI.md` | Outline |
-| **Prompt Engineering** | `PROMPT ENGINEERING/` | Mixed |
-| **Vibe Coding 101** | `VIBE CODING 101/` | Complete |
-| **Social Carousels** | `CAROUSELS/` | Complete |
-| **Templates & Design System** | `_templates/` | — |
-| **Product & Brand Strategy** | `_product/` | — |
+After the cleanup, 32 Markdown files remain outside the ignored local archive. The active repository is intentionally small and focused:
 
-### Zero to AI Builder (the flagship)
+| Area | Location | Current state |
+|---|---|---|
+| **AI Agents Levels** | `AI AGENTS LEVELS/` | 4 agent architectures × 4 parts: single, pipeline, multi-agent, and agent teams |
+| **Pi Coding Agent** | `PI-CODING-AGENT/` | Active two-output package: `pi-agent.md` and `pi-agent.pdf` |
+| **Prompt Engineering** | `PROMPT ENGINEERING/` | Developing curriculum, carousel, and long-form source |
+| **CLI reference** | `MASTERING CLI.md` | Early curriculum outline |
+| **Power-systems reference** | `pandapower.md` | Standalone engineering tutorial/reference |
 
-8 phases, from absolute beginner to AI developer:
+Supporting material lives in:
 
-- **terminal/** — Mac & Windows terminal, VS Code install, Markdown, browsers, DevTools
-- **git/** — Install Git, Git vs GitHub, undo mistakes, commit messages, collaboration
-- **web-dev/** — HTML/CSS, Flexbox, color, fonts, domains, responsive design, images, favicons, APIs
-- **python/** — Python install (Mac/Windows), venv, scripting, CSV, APIs, Pandas, web scraping, email, scheduling, Tkinter
-- **ai/prompting/** — Prompt frameworks, coding prompts, structured outputs, AI as personal assistant
-- **ai/agents/** — What is an agent, build your first, tools, single vs multi-agent, memory
-- **ai/coding/** — Agentic coding, debug with AI, build apps, break down projects, review AI code
-- **ai/automations/** — Daily task automation, connect apps, workflows, spreadsheets, scheduling
-- **career/** — Portfolio, LinkedIn, open source, learning strategies, documentation, consistency
-- **content/** — Copy-paste prompt templates, quick automation wins, case studies
-- **general/** — File structure, README writing, tutorial index
+- `_templates/` — shared Marp styling and cover templates
+- `_product/` — brand structure and product definitions
+- `STATUS.md` — project metadata used by the workspace `/doctor` extension
 
-## How Tutorials Are Built
+## AI Agents Levels
 
-Every tutorial is a **single-file MARP Markdown slide deck**.
+`AI AGENTS LEVELS/` contains four architecture tracks, each divided into four parts:
 
-### File format
+- **Single Agent** — one agent with tools and memory
+- **Pipeline Agent** — staged work across specialized steps
+- **Multi-Agent** — multiple agents coordinating a task
+- **Agent Teams** — agents collaborating as a team
+
+Each track is a standalone Marp Markdown deck sequence and can be exported independently.
+
+## Pi Coding Agent package
+
+`PI-CODING-AGENT/` publishes exactly two outputs:
+
+1. `pi-agent.md` — a 24-page progressive Marp tutorial source
+2. `pi-agent.pdf` — the rendered PDF export
+
+Render the PDF with:
+
+```bash
+cd PI-CODING-AGENT
+marp --pdf pi-agent.md --output pi-agent.pdf
+```
+
+The package README documents its supporting source and maintenance files. The removed expanded Pi deck is not part of the current publishing output.
+
+## Prompt Engineering
+
+`PROMPT ENGINEERING/` currently contains:
+
+- `PROMPT ENGINEERING 101.md` — long-form curriculum source
+- `carousel.md` — social derivative
+- `docx.md` — document-oriented derivative
+
+## Archive and cleanup
+
+`archive/` is an ignored local holding area for retired material. It currently contains the former:
+
+- Zero to AI Builder curriculum and associated product/export files
+- Vibe Coding 101 files
+- Carousel exports and source files
+
+The previous `CLAUDE CODE/` collection was deleted rather than moved into the archive. Archived files are not part of the published repository and are not discovered by the workspace `/doctor` scan.
+
+## How tutorials are built
+
+Tutorial sources use single-file Marp Markdown decks with embedded HTML/CSS components. The shared design system is `_templates/MARP_STYLING_TEMPLATE.md`; reuse it rather than creating a separate visual system.
+
+### Marp file format
 
 ```markdown
 ---
@@ -47,7 +80,6 @@ paginate: true
 html: true
 size: 4:3
 style: |
-  @import url('...');
   /* CSS variables + component styles */
 ---
 
@@ -58,125 +90,80 @@ style: |
 Content with HTML grid/card components...
 ```
 
-**Key conventions:**
-- YAML frontmatter with `marp: true`, `html: true`, `size: 4:3`
-- Embedded CSS in `<style>` tags (inline in the `style:` frontmatter field)
-- HTML `<div>` components for layouts (cards, grids, columns, diagrams)
-- Slide classes via `<!-- _class: -->` comments (cover, step, cta, lead)
-- Page footers auto-generated via `section::after`
+### Design conventions
 
-### Design system
+- **Typography:** DM Sans for headings/body and DM Mono for code/vocabulary
+- **Blue theme:** `#2563eb` for selected educational decks
+- **Amber theme:** `#d97706` for AI Agents Levels
+- **Dark themes:** used by Pi and selected technical decks
+- **Components:** cards, stat cards, comparison grids, process flows, timelines, code comparisons, checklists, and diagrams
 
-The master template is at `_templates/MARP_STYLING_TEMPLATE.md` (1551 lines).
+## Export workflow
 
-**Typography:** DM Sans (headings/body) + DM Mono (code/vocabulary)
-
-**Color themes:**
-
-| Theme | Primary | Used In |
-|-------|---------|---------|
-| Blue | `#2563eb` | ZERO TO AI BUILDER |
-| Amber | `#d97706` | AI AGENTS LEVELS |
-| Dark (amber accents) | `#080808` bg | CLAUDE CODE |
-| Dark (blue/green) | — | CAROUSELS |
-
-**Slide classes:**
-- `cover` — dark full-bleed title slide
-- `step` — alternate background section divider
-- `cta` — branded call-to-action closing slide
-- `lead` — centered bold statement slide
-
-**Components** (all built with HTML/CSS grids):
-- Cards & card rows — feature highlights
-- Stat cards — numbers/metrics
-- Tool/memory cards — software-specific callouts
-- Versus grids — comparison layouts
-- Process flow / timeline — step-by-step
-- Code comparison — side-by-side code
-- ReAct loop diagram — agent reasoning visualization
-- Checklists — actionable items
-- Pros/cons — balanced comparison
-
-### Adding a new tutorial
-
-1. Copy the relevant template (`_templates/MARP_STYLING_TEMPLATE.md`)
-2. Set the color variables to your theme
-3. Write slides with the available component classes
-4. Export to PDF (see below)
-
-## Export Workflow
-
-### Prerequisites
+### Install Marp
 
 ```bash
 npm install -g @marp-team/marp-cli
 ```
 
-### Export a single file
+### Preview a deck
 
 ```bash
-npx @marp-team/marp-cli --pdf "ZERO TO AI BUILDER/terminal/Mac Terminal.md"
+npx @marp-team/marp-cli --preview "path/to/file.md"
 ```
 
-### Export all in a directory
+### Export one deck
 
 ```bash
-npx @marp-team/marp-cli --pdf "ZERO TO AI BUILDER/**/*.md"
+npx @marp-team/marp-cli --pdf "AI AGENTS LEVELS/Single Agent p1.md"
 ```
 
-### VS Code alternative
+### Export the Pi package
 
-1. Install "Marp for VS Code" extension
-2. Right-click a `.md` file → "Marp: Export Slide Deck..."
-3. Or command palette → "Marp: Export All"
-
-### Git note
-
-`*.pdf` is gitignored — PDFs are build artifacts. Export them before distribution.
-
-## Distribution
-
-Tutorials are sold on **[Gumroad](https://gumroad.com/)** as PDF bundles.
-
-- **Phases 1–2:** Free
-- **Phases 3–8:** $9 each
-- **Full bundle:** $29
-- **Pricing tiers:** $5 (budget), $9 (standard), $15 (supporter)
-
-See `_product/GUMROAD_PRODUCT_DESCRIPTIONS.md` and `ZERO TO AI BUILDER/GUMROAD_LAUNCH_PLAN.md` for full strategy.
-
-## Project Structure
-
+```bash
+cd PI-CODING-AGENT
+marp --pdf pi-agent.md --output pi-agent.pdf
 ```
+
+PDF files are generated publishing artifacts and are ignored by Git. Treat Markdown as the source of truth and rebuild exports before distribution.
+
+## Product and distribution
+
+Product definitions and brand strategy are kept under `_product/`:
+
+- `_product/PRODUCT_AI_AGENTS_LEVELS.md`
+- `_product/PRODUCT_ZERO_TO_AI_BUILDER.md`
+- `_product/juliusdarang_BRAND_STRUCTURE.md`
+
+Tutorial products are distributed through **[Gumroad](https://gumroad.com/)** and related free content channels. The archived Zero to AI Builder files remain available locally for reference but are not active publishing sources in this cleaned repository.
+
+## Repository structure
+
+```text
 tutorials/
-├── _product/           # Brand docs, product descriptions, pricing
-├── _templates/         # MARP CSS template + cover template
-├── AI AGENTS LEVELS/   # 4 levels × 4 parts (50% complete)
-├── CAROUSELS/          # Social media carousel slides
-├── CLAUDE CODE/        # 18 tutorials — one per Claude Code command
-├── PROMPT ENGINEERING/ # Curriculum + carousel + long-form doc
-├── VIBE CODING 101/    # Curriculum + carousel + long-form doc
-├── ZERO TO AI BUILDER/ # Flagship: 8 phases across 11 subdirectories
-│   ├── terminal/       git/  web-dev/  python/
-│   ├── ai/             {prompting/  agents/  coding/  automations/}
-│   ├── career/         content/  general/
-│   ├── LEARNING_PATH.md
-│   └── GUMROAD_LAUNCH_PLAN.md
-├── MASTERING CLI.md    # CLI mastery outline
-└── README.md           # This file
+├── _product/           # Brand docs and product definitions
+├── _templates/         # Shared Marp styling and cover templates
+├── PI-CODING-AGENT/    # Pi tutorial: pi-agent.md + pi-agent.pdf
+├── AI AGENTS LEVELS/   # 4 agent architectures × 4 parts
+├── PROMPT ENGINEERING/ # Prompting curriculum and derivatives
+├── MASTERING CLI.md    # CLI curriculum outline
+├── pandapower.md       # Standalone engineering reference
+├── archive/            # Ignored local archive of retired material
+├── README.md           # Repository guide
+└── STATUS.md           # Workspace metadata entry point
 ```
 
-## Quick Start
+## Quick start
 
 ```bash
-# Preview a deck in the browser
+# From the repository root: preview a deck
 npx @marp-team/marp-cli --preview "path/to/file.md"
 
-# Export to PDF
+# Export a deck
 npx @marp-team/marp-cli --pdf "path/to/file.md"
 
-# Watch and auto-rebuild on save
-npx @marp-team/marp-cli --watch --pdf "path/to/file.md"
+# Render the Pi tutorial PDF
+cd PI-CODING-AGENT && marp --pdf pi-agent.md --output pi-agent.pdf
 ```
 
 ## License
