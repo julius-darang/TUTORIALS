@@ -1,0 +1,381 @@
+% Pi Coding Agent vertical tutorial PDF header.
+% Rendered with Pandoc + XeLaTeX.
+
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{framed}
+\usepackage{hyperref}
+
+% Keep the visual language aligned with the tutorial decks.
+\definecolor{piaccent}{HTML}{D77600}
+\definecolor{piblue}{HTML}{4A90D9}
+\definecolor{pimut}{HTML}{7A7A78}
+\definecolor{piblack}{HTML}{0A0A0A}
+\definecolor{pibody}{HTML}{242424}
+\definecolor{picode}{HTML}{F3F0EB}
+\definecolor{piline}{HTML}{DDD7CE}
+
+\geometry{
+  paperwidth=8.27in,
+  paperheight=11.69in,
+  top=0.78in,
+  bottom=0.72in,
+  inner=0.86in,
+  outer=0.72in,
+  headheight=15pt,
+  headsep=0.18in,
+  footskip=0.36in
+}
+
+\setmainfont{PT Sans}
+\setsansfont{PT Sans}
+\setmonofont{Andale Mono}[Scale=MatchLowercase]
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.56em}
+\linespread{1.08}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=piaccent,
+  urlcolor=piaccent,
+  citecolor=piaccent,
+  pdftitle={Pi Coding Agent},
+  pdfauthor={Julius Darang}
+}
+
+% Headings: restrained, orange chapter markers, no oversized slide typography.
+\titleformat{\section}
+  {\Large\sffamily\bfseries\color{piaccent}}
+  {}{0pt}{}
+\titleformat{\subsection}
+  {\large\sffamily\bfseries\color{pibody}}
+  {}{0pt}{}
+\titleformat{\subsubsection}
+  {\normalsize\sffamily\bfseries\color{pimut}}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.65em}
+\titlespacing*{\subsection}{0pt}{1.05em}{0.35em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.2em}
+
+% Page furniture.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\sffamily\color{pimut}PI CODING AGENT}
+\fancyhead[R]{\footnotesize\sffamily\color{pimut}@juliusdarang}
+\fancyfoot[C]{\footnotesize\sffamily\color{pimut}\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \newgeometry{margin=0.9in}
+    \pagecolor{piblack}\color{white}
+    \vspace*{1.2in}
+    {\sffamily\footnotesize\color{piaccent}\bfseries PI CODING AGENT\par}
+    \vspace{0.45in}
+    {\sffamily\fontsize{34}{40}\selectfont\bfseries\color{white}\@title\par}
+    \vspace{0.28in}
+    {\sffamily\Large\color{white!72}Build your coding workflow around a small terminal agent\par}
+    \vspace{0.52in}
+    % Translate the cover figure only; the title block above stays fixed.
+    \vspace{0.22in}
+    \picube
+    \vfill
+    {\sffamily\small\color{white!58}A practical guide to building a safe, project-aware terminal coding workflow.\par}
+    \vspace{0.18in}
+    {\sffamily\small\color{piaccent}\@author\par}
+    \restoregeometry
+  \end{titlepage}
+  \pagecolor{white}\color{pibody}
+  \pagestyle{fancy}
+}
+\makeatother
+
+% Small geometric mark for the cover: a transparent, corner-forward cube
+% drawn as a white wireframe so it follows the cover's black-and-white palette.
+\newcommand{\picubesingle}[2]{%
+  \begin{scope}[xshift=#1cm,yshift=#2cm]
+    % A small 10-degree yaw around the vertical (Y) axis. The nearest
+    % vertical edge stays fixed while the two horizontal directions shift.
+    \def\yaw{-10}
+    \pgfmathsetmacro{\cubeleftx}{-1.5*cos(\yaw) + 1.5*sin(\yaw)}
+    \pgfmathsetmacro{\cubelefty}{0.675*cos(\yaw) + 0.675*sin(\yaw)}
+    \pgfmathsetmacro{\cuberightx}{1.5*sin(\yaw) + 1.5*cos(\yaw)}
+    \pgfmathsetmacro{\cuberighty}{-0.675*sin(\yaw) + 0.675*cos(\yaw)}
+    \pgfmathsetmacro{\cubebackx}{\cubeleftx + \cuberightx}
+    \pgfmathsetmacro{\cubebacky}{\cubelefty + \cuberighty}
+
+    % The nearest vertical edge is centered, with a shallow diamond top face.
+    \coordinate (back-top)     at (\cubebackx,\cubebacky);
+    \coordinate (left-top)     at (\cubeleftx,\cubelefty);
+    \coordinate (front-top)    at (0,0);
+    \coordinate (right-top)    at (\cuberightx,\cuberighty);
+    \coordinate (back-bottom)  at (\cubebackx,\cubebacky-1.65);
+    \coordinate (left-bottom)  at (\cubeleftx,\cubelefty-1.65);
+    \coordinate (front-bottom) at (0,-1.65);
+    \coordinate (right-bottom) at (\cuberightx,\cuberighty-1.65);
+
+    % Faces remain unfilled and transparent; only the visible edges are drawn.
+    \draw[white!72] (back-top) -- (left-top) -- (front-top) --
+      (right-top) -- cycle;
+    \draw[white!72] (left-top) -- (left-bottom) -- (front-bottom);
+    \draw[white!72] (right-top) -- (right-bottom) -- (front-bottom);
+    \draw[white!72] (left-bottom) -- (front-bottom) -- (right-bottom);
+    \draw[white!72] (front-top) -- (front-bottom);
+  \end{scope}
+}
+
+\newcommand{\picube}{%
+  \begin{center}
+    \begin{tikzpicture}[xscale=1.15, yscale=1.25, line join=round,
+      line cap=round, line width=0.9pt]
+      % Nine matching cubes with a small, consistent gap between them.
+      \foreach \x in {0,2.55,5.10} {
+        \foreach \y in {0,-2.55,-5.10} {
+          \picubesingle{\x}{\y}
+        }
+      }
+    \end{tikzpicture}
+  \end{center}
+}
+
+% Full-page chapter dividers for the four-part tutorial structure.
+\newcommand{\partpage}[3]{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{section}{Part #1 -- #2}
+  \pdfbookmark[1]{Part #1 -- #2}{part-#1}
+  \thispagestyle{empty}
+  \pagecolor{piblack}\color{white}
+  \begin{center}
+    \vspace*{1.35in}
+    {\sffamily\footnotesize\color{piaccent}\bfseries PART #1\par}
+    \vspace{0.42in}
+    {\sffamily\fontsize{30}{36}\selectfont\bfseries\color{white}#2\par}
+    \vspace{0.32in}
+    {\sffamily\large\color{white!70}#3\par}
+    \vfill
+    {\sffamily\footnotesize\color{white!45}PI CODING AGENT · JULIUS DARANG\par}
+  \end{center}
+  \clearpage
+  \pagecolor{white}\color{pibody}
+  \pagestyle{fancy}
+}
+
+% Code blocks are readable on paper and retain the terminal character.
+\definecolor{shadecolor}{HTML}{F3F0EB}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\small,breaklines=true,breakanywhere=true,commandchars=\\\{\}}
+\setlength{\fboxsep}{8pt}
+
+% Lists should breathe without becoming slide-like.
+\setlist[itemize]{leftmargin=1.35em,itemsep=0.18em,topsep=0.2em}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=0.18em,topsep=0.2em}
+
+% Make blockquotes read as practical callouts.
+\renewenvironment{quote}{%
+  \begin{leftbar}\small\color{pimut}
+}{%
+  \end{leftbar}
+}
+\renewcommand{\FrameCommand}{\hspace{0.4em}\textcolor{piaccent}{\vrule width 1.5pt}\hspace{0.8em}}
+
+% Keep the table of contents compact and usable.
+\renewcommand{\contentsname}{Contents}
+\setcounter{tocdepth}{2}
+\let\pioriginaltableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\pioriginaltableofcontents\clearpage}
+
+% Explanatory visuals shared with the Marp deck. These are deliberately
+% text-first so the vertical PDF remains searchable, printable, and robust.
+\newcommand{\pibox}[2]{%
+  \fcolorbox{piline}{white}{%
+    \parbox[t]{0.18\textwidth}{%
+      \vspace{3pt}
+      {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
+      \vspace{2pt}
+      {\footnotesize\color{pibody}#2\par}
+      \vspace{3pt}%
+    }%
+  }%
+}
+\newcommand{\pihumanbox}[2]{%
+  \fcolorbox{piaccent}{white}{%
+    \parbox[t]{0.18\textwidth}{%
+      \vspace{3pt}
+      {\sffamily\footnotesize\bfseries\color{piaccent}HUMAN-OWNED GATE\par}
+      \vspace{2pt}
+      {\sffamily\footnotesize\bfseries\color{pibody}#1\par}
+      \vspace{2pt}
+      {\footnotesize\color{pibody}#2\par}
+      \vspace{3pt}%
+    }%
+  }%
+}
+\newcommand{\piwidebox}[2]{%
+  \fcolorbox{piline}{white}{%
+    \parbox[t]{0.82\textwidth}{%
+      \vspace{3pt}
+      {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
+      \vspace{2pt}
+      {\footnotesize\color{pibody}#2\par}
+      \vspace{3pt}%
+    }%
+  }%
+}
+\newcommand{\piarrows}{\hspace{3pt}{\color{pimut}\Large$\rightarrow$}\hspace{3pt}}
+\newcommand{\piwire}{\vspace{0.35em}\par}
+
+\newcommand{\pimentalmodel}{%
+  \begin{center}\small
+  \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
+    \pibox{MODEL}{Provider and reasoning\\what thinks} & \piarrows & \pibox{PI}{Minimal generic core\\connects the workflow} & \piarrows & \pibox{TOOLS}{read, write, edit, bash\\what can act} & \piarrows & \pibox{PROJECT}{Files, Git, tests\\where Pi runs}\\[0.45em]
+    & & \multicolumn{1}{c}{\color{pimut}\Large$\uparrow$} & & & & \\[-0.1em]
+    & & \pibox{RESOURCES}{Rules, skills, prompts\\shape how Pi works} & & & &
+  \end{tabular}
+  \end{center}\piwire
+}
+
+\newcommand{\pifirstsession}{%
+  \begin{center}\small
+  \pibox{01 · PROJECT}{Start in the right directory}\piarrows
+  \pibox{02 · INSPECT}{Ask for a summary and checks}\piarrows
+  \pibox{03 · ACT}{Give one bounded action}\piarrows
+  \pibox{04 · VERIFY}{Read the response, tools, and result}
+  \\
+  \makebox[0.82\textwidth][r]{\color{pimut}\footnotesize$\circlearrowleft$\; next bounded task}
+  \end{center}\piwire
+}
+
+\newcommand{\pitoolmap}{%
+  \begin{center}\renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{ccc}
+    & \pibox{MODEL}{Decides what to request} & \\[0.15em]
+    & {\color{pimut}\Large$\downarrow$} & \\[0.15em]
+    \pibox{read}{Inspect files and images} & \pibox{PI}{Routes explicit actions\\four focused capabilities} & \pibox{write}{Create or replace deliberately}\\[0.35em]
+    \pibox{edit}{Apply a precise patch} & & \pibox{bash}{Run checks and commands}
+  \end{tabular}\end{center}\piwire
+}
+
+\newcommand{\piinspectflow}{%
+  \begin{center}\small
+  \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
+    \pibox{01 · LOCATE}{Find files and entry points} & \piarrows & \pibox{02 · UNDERSTAND}{Explain behavior and constraints} & \piarrows & \pibox{03 · PLAN}{Bound the work before editing}\\[0.45em]
+    \multicolumn{5}{c}{\piwidebox{SCOPE BOUNDARY}{Review the plan before editing}}\\[0.45em]
+    \pibox{04 · CHANGE}{Make the smallest patch} & \piarrows & \pibox{05 · VERIFY}{Run checks and inspect the diff} & &
+  \end{tabular}
+  \end{center}\piwire
+}
+
+\newcommand{\pitrust}{%
+  \begin{center}\renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{ccc}
+    \pibox{PROJECT TRUST}{Trust decision} & \piarrows & \pibox{WHAT LOADS}{Settings, skills, packages}\\[0.45em]
+    \pibox{USER PERMISSIONS}{Account access} & \piarrows & \pibox{WHAT RUNS}{Tools and commands}
+  \end{tabular}\end{center}\piwire
+}
+
+\newcommand{\pigitcheckpoint}{%
+  \begin{center}\small
+  \pibox{CHECKPOINT}{Create a reversible branch}\piarrows
+  \pibox{PI WORKS}{Bound the task and change files}\piarrows
+  \pibox{EVIDENCE}{Diff, checks, and tests}\piarrows
+  \pihumanbox{HUMAN DECISION}{Review, then commit what you understand}
+  \end{center}\piwire
+}
+
+\newcommand{\pisessions}{%
+  \begin{center}\renewcommand{\arraystretch}{1.2}
+  \piwidebox{SESSION}{release-audit — original path preserved}\\[0.2em]
+  {\color{pimut}\Large$\swarrow\hspace{2.5em}\searrow$}\\[0.1em]
+  \pibox{/fork}{Branch A\\start from an earlier message}\hspace{0.8em}
+  \pibox{/clone}{Branch B\\duplicate before risk}\\[0.4em]
+  \piwidebox{RECOVER}{/resume · /new · /tree · /export}
+  \end{center}\piwire
+}
+
+\newcommand{\picompaction}{%
+  \begin{center}
+  \pibox{ACTIVE CONTEXT}{Recent conversation, tool output, decisions, and open work.} \piarrows
+  \pibox{LOSSY SUMMARY}{Older conversation compressed into what still matters.}\\[0.45em]
+  \piwidebox{DURABLE MEMORY OUTSIDE THE CONTEXT}{Decisions belong in files, issues, or commits; they survive compaction.}
+  \end{center}\piwire
+}
+
+\newcommand{\piprintmode}{%
+  \begin{center}\small
+  \pibox{PROMPT}{One-shot request}\piarrows
+  \pibox{PI}{Read-only allowlist\\read, grep, find, ls}\piarrows
+  \pibox{OUTPUT}{Plain text\\review before action}
+  \end{center}\piwire
+}
+
+\newcommand{\pijsonmode}{%
+  \begin{center}\small
+  \pibox{PI}{Streaming events}\piarrows
+  \pibox{JSON STREAM}{Deltas by content index\par\texttt{message\_end} is final authority}\piarrows
+  \pibox{JQ / APP}{Assemble and consume\\filter or observe}
+  \end{center}\piwire
+}
+
+\newcommand{\pioutputmode}[3]{%
+  \begin{center}\small
+  \pibox{PI · #1}{No interactive UI}\piarrows
+  \pibox{OUTPUT}{#2}\piarrows
+  \pibox{NEXT STEP}{#3}
+  \end{center}\piwire
+}
+
+\newcommand{\pistack}{%
+  \begin{center}
+  \piwidebox{PACKAGES}{Share resources through npm, Git, or a local path}\\[0.25em]
+  \piwidebox{EXTENSIONS}{Add tools, commands, events, UI, and gates}\\[0.25em]
+  \piwidebox{PROMPT TEMPLATES}{Turn repeatable prompts into slash commands}\\[0.25em]
+  \piwidebox{SKILLS}{Load on-demand instructions for a capability}\\[0.25em]
+  \piwidebox{CONTEXT FILES}{Keep project rules always present}\\[0.25em]
+  \piwidebox{PI CORE}{Small, generic, and reusable}
+  \end{center}\piwire
+}
+
+\newcommand{\pigate}{%
+  \begin{center}\small
+  \pibox{TOOL CALL}{A bash command is requested}\piarrows
+  \pibox{GATE}{Inspect the command and ask for confirmation}\piarrows
+  \pibox{ALLOW / BLOCK}{Continue or stop with a reason}
+  \end{center}\piwire
+}
+
+\newcommand{\pilocalmodel}{%
+  \begin{center}\small
+  \pibox{PI}{Same agent workflow}\piarrows
+  \pibox{API ROUTE}{OpenAI-compatible localhost endpoint}\piarrows
+  \pibox{OLLAMA}{Model runs locally}
+  \end{center}\piwire
+}
+
+\newcommand{\pisdk}{%
+  \begin{center}\small
+  \pibox{APPLICATION}{Node or TypeScript product}\piarrows
+  \pibox{SDK SESSION}{State, events, and prompts}\piarrows
+  \pibox{PI WORKFLOW}{Model, tools, and project}
+  \end{center}\piwire
+}
+
+\newcommand{\pisandbox}{%
+  \begin{center}\renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{@{}p{0.22\textwidth}p{0.68\textwidth}@{}}
+    {\sffamily\footnotesize\bfseries\color{piaccent}HOST} & Project and credentials remain outside the container boundary.\\[0.35em]
+    {\sffamily\footnotesize\bfseries\color{piaccent}CONTAINER} & Pi runs with only the workspace, credentials, and network access you pass in.\\[0.35em]
+    {\sffamily\footnotesize\bfseries\color{piaccent}LIMIT} & A mounted workspace can still write through to the host; use a VM or stronger isolation when needed.
+  \end{tabular}\end{center}\piwire
+}

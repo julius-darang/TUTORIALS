@@ -9,12 +9,12 @@ style: |
   :root {
     --body: 'STIX Two Text', 'Latin Modern Roman', Georgia, serif;
     --mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
-    --white:       #e8e7e3;
-    --off-white:   #c9c8c3;
-    --subtle:      #a7a6a1;
-    --muted:       #85847f;
-    --faint:       #4e4e4a;
-    --bg:          #121313;
+    --white: #e8e7e3;
+    --off-white: #c9c8c3;
+    --subtle: #a7a6a1;
+    --muted: #85847f;
+    --faint: #4e4e4a;
+    --bg: #121313;
     --card-border: #2a2a28;
   }
 
@@ -56,7 +56,7 @@ style: |
     margin: 0 0 14px 0;
   }
   strong { color: var(--white); font-weight: 600; }
-  em     { color: var(--muted); font-style: italic; }
+  em { color: var(--muted); font-style: italic; }
   code {
     font-family: var(--mono);
     background: transparent;
@@ -73,12 +73,10 @@ style: |
     gap: 20px;
     margin-bottom: 28px;
   }
-  .header-row h2 {
-    margin: 0;
-  }
+  .header-row h2 { margin: 0; font-size: 30px; }
   .page-num {
     font-family: var(--mono);
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.15;
     color: var(--muted);
     letter-spacing: 0;
@@ -111,18 +109,17 @@ style: |
     min-width: 16px;
   }
   .card-row-body h3 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--white);
     margin: 0 0 3px;
   }
   .card-row-body p {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--subtle);
     margin: 0;
     line-height: 1.45;
   }
-
   .list {
     display: flex;
     flex-direction: column;
@@ -142,13 +139,13 @@ style: |
   }
   .list-num {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
     flex-shrink: 0;
     margin-top: 1px;
     min-width: 18px;
   }
-  .list-text { font-size: 13.5px; color: var(--subtle); line-height: 1.45; }
+  .list-text { font-size: 16px; color: var(--subtle); line-height: 1.45; }
   .list-text strong { color: var(--white); }
 
   section.cover {
@@ -173,11 +170,7 @@ style: |
     text-transform: uppercase;
     margin-bottom: 24px;
   }
-  section.cover h1 {
-    font-size: 58px;
-    line-height: 1.05;
-    margin-bottom: 18px;
-  }
+  section.cover h1 { font-size: 58px; line-height: 1.05; margin-bottom: 18px; }
   section.cover p {
     max-width: 620px;
     font-size: 20px;
@@ -194,21 +187,17 @@ style: |
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-
-  section.divider {
-    justify-content: center;
-    border-left: 5px solid var(--off-white);
-    background: #171817;
-  }
+  section.divider { justify-content: center; border-left: 5px solid var(--off-white); background: #171817; }
   section.divider h1 { font-size: 42px; color: var(--white); margin-bottom: 10px; }
-  section.divider p  { font-size: 15px; color: var(--muted); }
-
+  section.divider p { font-size: 15px; color: var(--muted); }
   section.cta {
     justify-content: center;
     align-items: center;
     text-align: center;
     background: #e9e9e5;
   }
+  section.cover::after,
+  section.cta::after { display: none !important; }
   .cta-content {
     display: flex;
     flex-direction: column;
@@ -238,11 +227,13 @@ style: |
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-
   section > .header-row,
-  section > h2 {
-    width: 100%;
-    max-width: 720px;
+  section > h2 { width: 100%; max-width: 720px; }
+
+  /* Keep every progressive state anchored to the same coordinates. */
+  section:not(.cover):not(.cta) {
+    justify-content: flex-start;
+    padding-top: 184px;
   }
 
   section::after {
@@ -262,8 +253,8 @@ style: |
 
 <div class="cover-content">
   <div class="cover-kicker">PI CODING AGENT</div>
-  <h1>Pi Coding Agent</h1>
-  <p>A small, provider-agnostic coding agent.</p>
+  <h1>Pi</h1>
+  <p>A minimal, highly-extensible, terminal-based coding agent.</p>
   <div class="cover-meta">
     <span>Four tools</span>
     <span>Many providers</span>
@@ -273,7 +264,52 @@ style: |
 
 ---
 
-<!-- SLIDE 2 · WHAT IT IS -->
+<!-- SLIDE 2A · WHAT IT IS · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">I.</span>
+  <h2>What Pi is</h2>
+</div>
+
+<div class="cards-col">
+  <div class="card-row">
+    <span class="card-row-letter">01</span>
+    <div class="card-row-body">
+      <h3>Four tools</h3>
+      <p><code>read</code> · <code>write</code> · <code>edit</code> · <code>bash</code></p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 2B · WHAT IT IS · STATE 2 -->
+
+<div class="header-row">
+  <span class="page-num">I.</span>
+  <h2>What Pi is</h2>
+</div>
+
+<div class="cards-col">
+  <div class="card-row">
+    <span class="card-row-letter">01</span>
+    <div class="card-row-body">
+      <h3>Four tools</h3>
+      <p><code>read</code> · <code>write</code> · <code>edit</code> · <code>bash</code></p>
+    </div>
+  </div>
+  <div class="card-row">
+    <span class="card-row-letter">02</span>
+    <div class="card-row-body">
+      <h3>Open source</h3>
+      <p>MIT-licensed. Runs locally.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 2C · WHAT IT IS · STATE 3 -->
 
 <div class="header-row">
   <span class="page-num">I.</span>
@@ -306,7 +342,43 @@ style: |
 
 ---
 
-<!-- SLIDE 3 · WHY PI -->
+<!-- SLIDE 3A · WHY PI · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">II.</span>
+  <h2>Why Pi</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Less built in</strong> — fewer defaults and less hidden behavior</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 3B · WHY PI · STATE 2 -->
+
+<div class="header-row">
+  <span class="page-num">II.</span>
+  <h2>Why Pi</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Less built in</strong> — fewer defaults and less hidden behavior</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>More control</strong> — choose the model, tools, and boundaries</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 3C · WHY PI · STATE 3 -->
 
 <div class="header-row">
   <span class="page-num">II.</span>
@@ -330,7 +402,43 @@ style: |
 
 ---
 
-<!-- SLIDE 4 · PHILOSOPHY -->
+<!-- SLIDE 4A · PHILOSOPHY · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">III.</span>
+  <h2>The philosophy</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Adapt the agent</strong> — fit Pi to the way you already work</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 4B · PHILOSOPHY · STATE 2 -->
+
+<div class="header-row">
+  <span class="page-num">III.</span>
+  <h2>The philosophy</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Adapt the agent</strong> — fit Pi to the way you already work</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Keep the core small</strong> — add tools and features opt in</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 4C · PHILOSOPHY · STATE 3 -->
 
 <div class="header-row">
   <span class="page-num">III.</span>
@@ -354,7 +462,67 @@ style: |
 
 ---
 
-<!-- SLIDE 5 · THE 4 PILLARS -->
+<!-- SLIDE 5A · THE 4 PILLARS · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">IV.</span>
+  <h2>Four building blocks</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Context</strong> — project instructions</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 5B · THE 4 PILLARS · STATE 2 -->
+
+<div class="header-row">
+  <span class="page-num">IV.</span>
+  <h2>Four building blocks</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Context</strong> — project instructions</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Extensions</strong> — tools and commands</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 5C · THE 4 PILLARS · STATE 3 -->
+
+<div class="header-row">
+  <span class="page-num">IV.</span>
+  <h2>Four building blocks</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Context</strong> — project instructions</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Extensions</strong> — tools and commands</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>Skills</strong> — on-demand capabilities</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 5D · THE 4 PILLARS · STATE 4 -->
 
 <div class="header-row">
   <span class="page-num">IV.</span>
@@ -382,7 +550,67 @@ style: |
 
 ---
 
-<!-- SLIDE 6 · HOW IT RUNS -->
+<!-- SLIDE 6A · HOW IT RUNS · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">V.</span>
+  <h2>Ways to run Pi</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Interactive</strong> — work in the terminal</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 6B · HOW IT RUNS · STATE 2 -->
+
+<div class="header-row">
+  <span class="page-num">V.</span>
+  <h2>Ways to run Pi</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Interactive</strong> — work in the terminal</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Print / JSON</strong> — script and pipe output</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 6C · HOW IT RUNS · STATE 3 -->
+
+<div class="header-row">
+  <span class="page-num">V.</span>
+  <h2>Ways to run Pi</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Interactive</strong> — work in the terminal</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Print / JSON</strong> — script and pipe output</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>RPC</strong> — drive Pi programmatically</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 6D · HOW IT RUNS · STATE 4 -->
 
 <div class="header-row">
   <span class="page-num">V.</span>
@@ -410,7 +638,23 @@ style: |
 
 ---
 
-<!-- SLIDE 7 · TRY IT -->
+<!-- SLIDE 7A · TRY IT · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">VI.</span>
+  <h2>Install</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Install</strong> — <code>npm i -g @earendil-works/pi-coding-agent</code></span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 7B · TRY IT · STATE 2 -->
 
 <div class="header-row">
   <span class="page-num">VI.</span>
@@ -430,7 +674,43 @@ style: |
 
 ---
 
-<!-- SLIDE 8 · TAKEAWAY -->
+<!-- SLIDE 8A · TAKEAWAY · STATE 1 -->
+
+<div class="header-row">
+  <span class="page-num">VII.</span>
+  <h2>Takeaway</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Start with the core</strong> — four tools and a local runtime</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 8B · TAKEAWAY · STATE 2 -->
+
+<div class="header-row">
+  <span class="page-num">VII.</span>
+  <h2>Takeaway</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Start with the core</strong> — four tools and a local runtime</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Choose your boundaries</strong> — sandbox what the agent can do</span>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 8C · TAKEAWAY · STATE 3 -->
 
 <div class="header-row">
   <span class="page-num">VII.</span>
@@ -461,5 +741,5 @@ style: |
   <div class="cta-kicker">PI CODING AGENT</div>
   <h1>There are many coding agents.<br>This one is mine.</h1>
   <div class="cta-line">Install. Sandbox. Shape.</div>
-  <div class="handle">earendil-works/pi</div>
+  <!-- <div class="handle">earendil-works/pi</div> -->
 </div>

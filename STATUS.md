@@ -22,7 +22,7 @@ Monetize: publish free tutorials, ship the Gumroad PDF, open the Substack tier.
 Then fill the two stub tracks.
 
 ## Conventions
-- `.pi/skills/marp-slide-authoring/` — template reuse, cover page, per-page name watermark.
+- Global `marp-output` skill — authoring, structure, template selection, rendering, and QA; use `.pi/skills/visual-style/` for the Polymath tutorial template and design contract.
 - Styling source: `_templates/MARP_STYLING_TEMPLATE.md` — reuse, don't recreate.
 - Brand structure: `_product/juliusdarang_BRAND_STRUCTURE.md` + product defs.
 

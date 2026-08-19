@@ -1,0 +1,26 @@
+[
+  {
+    "number": "I",
+    "title": "Foundations",
+    "description": "Get Pi installed, authenticated, and working on a real project.",
+    "before": "## About this tutorial"
+  },
+  {
+    "number": "II",
+    "title": "Operating Workflow",
+    "description": "Make daily work recoverable, inspectable, and deliberate.",
+    "before": "## 10. Use Git as your checkpoint"
+  },
+  {
+    "number": "III",
+    "title": "Automation and Customization",
+    "description": "Move from interactive use to reusable, extensible workflows.",
+    "before": "## 15. Use print mode for one-shot work"
+  },
+  {
+    "number": "IV",
+    "title": "Integration and Shipping",
+    "description": "Connect Pi to other systems and use it responsibly on real work.",
+    "before": "## 23. Connect a local or custom model"
+  }
+]
