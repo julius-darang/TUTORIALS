@@ -94,7 +94,7 @@ pandoc "$TMP" \
   --pdf-engine-opt=-interaction=nonstopmode \
   --pdf-engine-opt=-halt-on-error \
   --include-in-header="$HEADER" \
-  --metadata title="Pi Coding Agent" \
+  --metadata title="Pi Agent" \
   --metadata author="Julius Darang" \
   --toc \
   --toc-depth=2 \
