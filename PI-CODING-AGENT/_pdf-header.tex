@@ -39,17 +39,29 @@
 \setmainfont{PT Sans}
 \setsansfont{PT Sans}
 \setmonofont{Andale Mono}[Scale=MatchLowercase]
+% Display face for cover + part dividers (matches the Marp deck body,
+% which uses STIX Two Text with weight 600 for headings).
+% Loaded from the TeX Live static instances by file: the macOS system copy
+% is a variable font that XeLaTeX cannot resolve by family name alone.
+\newfontfamily\displayfont{STIXTwoText-Regular}[
+  Path=/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/opentype/public/stix2-otf/,
+  Extension=.otf,
+  UprightFont=STIXTwoText-Regular,
+  BoldFont=STIXTwoText-SemiBold,
+  ItalicFont=STIXTwoText-Italic,
+  BoldItalicFont=STIXTwoText-SemiBoldItalic
+]
 \renewcommand{\familydefault}{\sfdefault}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.56em}
-\linespread{1.08}
+\setlength{\parskip}{0.85em}
+\linespread{1.18}
 
 \hypersetup{
   colorlinks=true,
   linkcolor=piaccent,
   urlcolor=piaccent,
   citecolor=piaccent,
-  pdftitle={Pi Coding Agent},
+  pdftitle={Pi Agent},
   pdfauthor={Julius Darang}
 }
 
@@ -63,9 +75,9 @@
 \titleformat{\subsubsection}
   {\normalsize\sffamily\bfseries\color{pimut}}
   {}{0pt}{}
-\titlespacing*{\section}{0pt}{1.5em}{0.65em}
-\titlespacing*{\subsection}{0pt}{1.05em}{0.35em}
-\titlespacing*{\subsubsection}{0pt}{0.8em}{0.2em}
+\titlespacing*{\section}{0pt}{2.6em}{0.75em}
+\titlespacing*{\subsection}{0pt}{1.7em}{0.45em}
+\titlespacing*{\subsubsection}{0pt}{1.25em}{0.3em}
 
 % Page furniture.
 \pagestyle{fancy}
@@ -80,20 +92,20 @@
   \begin{titlepage}
     \newgeometry{margin=0.9in}
     \pagecolor{piblack}\color{white}
-    \vspace*{1.2in}
-    {\sffamily\footnotesize\color{piaccent}\bfseries PI CODING AGENT\par}
+    \vspace*{0.55in}
+    {\displayfont\footnotesize\color{piaccent}\bfseries PI CODING AGENT\par}
     \vspace{0.45in}
-    {\sffamily\fontsize{34}{40}\selectfont\bfseries\color{white}\@title\par}
+    {\displayfont\fontsize{34}{40}\selectfont\bfseries\color{white}\@title\par}
     \vspace{0.28in}
-    {\sffamily\Large\color{white!72}Build your coding workflow around a small terminal agent\par}
+    {\displayfont\Large\color{white!72}Build your coding workflow around a small terminal agent\par}
     \vspace{0.52in}
     % Translate the cover figure only; the title block above stays fixed.
     \vspace{0.22in}
     \picube
     \vfill
-    {\sffamily\small\color{white!58}A practical guide to building a safe, project-aware terminal coding workflow.\par}
+    {\displayfont\small\color{white!58}A practical guide to building a safe, project-aware terminal coding workflow.\par}
     \vspace{0.18in}
-    {\sffamily\small\color{piaccent}\@author\par}
+    {\displayfont\small\color{piaccent}\@author\par}
     \restoregeometry
   \end{titlepage}
   \pagecolor{white}\color{pibody}
@@ -103,15 +115,28 @@
 
 % Small geometric mark for the cover: a transparent, corner-forward cube
 % drawn as a white wireframe so it follows the cover's black-and-white palette.
+% The geometry is a 2D oblique projection rather than a true 3D rotation;
+% keeping the dimensions named makes the mark easier to tune for the cover.
 \newcommand{\picubesingle}[2]{%
   \begin{scope}[xshift=#1cm,yshift=#2cm]
-    % A small 10-degree yaw around the vertical (Y) axis. The nearest
-    % vertical edge stays fixed while the two horizontal directions shift.
-    \def\yaw{-10}
-    \pgfmathsetmacro{\cubeleftx}{-1.5*cos(\yaw) + 1.5*sin(\yaw)}
-    \pgfmathsetmacro{\cubelefty}{0.675*cos(\yaw) + 0.675*sin(\yaw)}
-    \pgfmathsetmacro{\cuberightx}{1.5*sin(\yaw) + 1.5*cos(\yaw)}
-    \pgfmathsetmacro{\cuberighty}{-0.675*sin(\yaw) + 0.675*cos(\yaw)}
+    \def\skewangle{-10}%
+    \def\cubehalfwidth{1.5}%
+    \def\cubedepth{0.675}%
+    \def\cubeheight{1.65}%
+
+    % Project the two horizontal directions of the shallow top face.
+    \pgfmathsetmacro{\cubeleftx}{
+      -\cubehalfwidth*cos(\skewangle) + \cubedepth*sin(\skewangle)
+    }
+    \pgfmathsetmacro{\cubelefty}{
+      \cubedepth*cos(\skewangle) + \cubedepth*sin(\skewangle)
+    }
+    \pgfmathsetmacro{\cuberightx}{
+      \cubehalfwidth*sin(\skewangle) + \cubehalfwidth*cos(\skewangle)
+    }
+    \pgfmathsetmacro{\cuberighty}{
+      -\cubedepth*sin(\skewangle) + \cubedepth*cos(\skewangle)
+    }
     \pgfmathsetmacro{\cubebackx}{\cubeleftx + \cuberightx}
     \pgfmathsetmacro{\cubebacky}{\cubelefty + \cuberighty}
 
@@ -120,29 +145,49 @@
     \coordinate (left-top)     at (\cubeleftx,\cubelefty);
     \coordinate (front-top)    at (0,0);
     \coordinate (right-top)    at (\cuberightx,\cuberighty);
-    \coordinate (back-bottom)  at (\cubebackx,\cubebacky-1.65);
-    \coordinate (left-bottom)  at (\cubeleftx,\cubelefty-1.65);
-    \coordinate (front-bottom) at (0,-1.65);
-    \coordinate (right-bottom) at (\cuberightx,\cuberighty-1.65);
+    \coordinate (left-bottom)  at (\cubeleftx,\cubelefty-\cubeheight);
+    \coordinate (front-bottom) at (0,-\cubeheight);
+    \coordinate (right-bottom) at (\cuberightx,\cuberighty-\cubeheight);
 
-    % Faces remain unfilled and transparent; only the visible edges are drawn.
-    \draw[white!72] (back-top) -- (left-top) -- (front-top) --
+    % Unfilled wireframe: opacity is actual draw transparency, not gray mixing.
+    % The rear/top outline is softer so the nearest corner leads the eye.
+    \draw[draw=white, draw opacity=.40]
+      (back-top) -- (left-top) -- (front-top) --
       (right-top) -- cycle;
-    \draw[white!72] (left-top) -- (left-bottom) -- (front-bottom);
-    \draw[white!72] (right-top) -- (right-bottom) -- (front-bottom);
-    \draw[white!72] (left-bottom) -- (front-bottom) -- (right-bottom);
-    \draw[white!72] (front-top) -- (front-bottom);
-  \end{scope}
+
+    % Side edges are drawn separately so the bottom edges are not duplicated.
+    \draw[draw=white, draw opacity=.55]
+      (left-top) -- (left-bottom);
+    \draw[draw=white, draw opacity=.55]
+      (right-top) -- (right-bottom);
+
+    % Bottom outline, drawn once.
+    \draw[draw=white, draw opacity=.65]
+      (left-bottom) -- (front-bottom) -- (right-bottom);
+
+    % Strongest edge: the front/nearest corner of the cube.
+    \draw[draw=white, draw opacity=.90, line width=1.05pt]
+      (front-top) -- (front-bottom);
+  \end{scope}%
 }
 
 \newcommand{\picube}{%
   \begin{center}
-    \begin{tikzpicture}[xscale=1.15, yscale=1.25, line join=round,
-      line cap=round, line width=0.9pt]
-      % Nine matching cubes with a small, consistent gap between them.
-      \foreach \x in {0,2.55,5.10} {
-        \foreach \y in {0,-2.55,-5.10} {
-          \picubesingle{\x}{\y}
+    \begin{tikzpicture}[
+      xscale=1.15,
+      yscale=1.25,
+      line join=round,
+      line cap=round,
+      line width=0.9pt
+    ]
+      % Tighter pitch keeps the original cube orientation while allowing
+      % neighboring wireframes to overlap into a denser 3x3 mark.
+      \def\cubestep{2.70}%
+      \foreach \row in {0,1,2} {
+        \foreach \column in {0,1,2} {
+          \pgfmathsetmacro{\xshift}{\column*\cubestep}
+          \pgfmathsetmacro{\yshift}{-\row*\cubestep}
+          \picubesingle{\xshift}{\yshift}
         }
       }
     \end{tikzpicture}
@@ -159,13 +204,13 @@
   \pagecolor{piblack}\color{white}
   \begin{center}
     \vspace*{1.35in}
-    {\sffamily\footnotesize\color{piaccent}\bfseries PART #1\par}
+    {\displayfont\footnotesize\color{piaccent}\bfseries PART #1\par}
     \vspace{0.42in}
-    {\sffamily\fontsize{30}{36}\selectfont\bfseries\color{white}#2\par}
+    {\displayfont\fontsize{30}{36}\selectfont\bfseries\color{white}#2\par}
     \vspace{0.32in}
-    {\sffamily\large\color{white!70}#3\par}
+    {\displayfont\large\color{white!70}#3\par}
     \vfill
-    {\sffamily\footnotesize\color{white!45}PI CODING AGENT · JULIUS DARANG\par}
+    {\displayfont\footnotesize\color{white!45}PI CODING AGENT · JULIUS DARANG\par}
   \end{center}
   \clearpage
   \pagecolor{white}\color{pibody}
@@ -179,8 +224,8 @@
 \setlength{\fboxsep}{8pt}
 
 % Lists should breathe without becoming slide-like.
-\setlist[itemize]{leftmargin=1.35em,itemsep=0.18em,topsep=0.2em}
-\setlist[enumerate]{leftmargin=1.55em,itemsep=0.18em,topsep=0.2em}
+\setlist[itemize]{leftmargin=1.35em,itemsep=0.45em,topsep=0.5em,parsep=0.3em}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=0.45em,topsep=0.5em,parsep=0.3em}
 
 % Make blockquotes read as practical callouts.
 \renewenvironment{quote}{%
@@ -200,7 +245,7 @@
 % text-first so the vertical PDF remains searchable, printable, and robust.
 \newcommand{\pibox}[2]{%
   \fcolorbox{piline}{white}{%
-    \parbox[t]{0.18\textwidth}{%
+    \parbox[c]{0.18\textwidth}{%%
       \vspace{3pt}
       {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
       \vspace{2pt}
@@ -211,7 +256,7 @@
 }
 \newcommand{\pihumanbox}[2]{%
   \fcolorbox{piaccent}{white}{%
-    \parbox[t]{0.18\textwidth}{%
+    \parbox[c]{0.18\textwidth}{%%
       \vspace{3pt}
       {\sffamily\footnotesize\bfseries\color{piaccent}HUMAN-OWNED GATE\par}
       \vspace{2pt}
@@ -224,7 +269,7 @@
 }
 \newcommand{\piwidebox}[2]{%
   \fcolorbox{piline}{white}{%
-    \parbox[t]{0.82\textwidth}{%
+    \parbox[c]{0.82\textwidth}{%%
       \vspace{3pt}
       {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
       \vspace{2pt}
@@ -234,19 +279,40 @@
   }%
 }
 \newcommand{\piarrows}{\hspace{3pt}{\color{pimut}\Large$\rightarrow$}\hspace{3pt}}
-\newcommand{\piwire}{\vspace{0.35em}\par}
+\newcommand{\pilarrows}{\hspace{3pt}{\color{pimut}\Large$\leftarrow$}\hspace{3pt}}
+\newcommand{\pibiarrows}{\hspace{3pt}{\color{pimut}\Large$\leftrightarrow$}\hspace{3pt}}
+\newcommand{\piudarrow}{{\color{pimut}\Large$\updownarrow$}}
+\newcommand{\piuparrow}{{\color{pimut}\Large$\uparrow$}}
+\newcommand{\pidownarrow}{{\color{pimut}\Large$\downarrow$}}
+% Diagrams get generous breathing room above and below so they read as
+% anchored figures, not inline clutter.
+\newcommand{\piwire}{\vspace{1.35em}\par}
 
 \newcommand{\pimentalmodel}{%
+  \vspace{0.85em}
   \begin{center}\small
-  \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
-    \pibox{MODEL}{Provider and reasoning\\what thinks} & \piarrows & \pibox{PI}{Minimal generic core\\connects the workflow} & \piarrows & \pibox{TOOLS}{read, write, edit, bash\\what can act} & \piarrows & \pibox{PROJECT}{Files, Git, tests\\where Pi runs}\\[0.45em]
-    & & \multicolumn{1}{c}{\color{pimut}\Large$\uparrow$} & & & & \\[-0.1em]
-    & & \pibox{RESOURCES}{Rules, skills, prompts\\shape how Pi works} & & & &
+  % Hub-and-spoke layout: Pi is central, with model, tools, resources,
+  % user intent, and project evidence around it rather than in one chain.
+  \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
+    % Pi supplies context to the model and receives a response or tool call.
+    & & \pibox{MODEL}{Prompts and reasoning\\what proposes} & & \\
+    & & \piudarrow & & \\
+    % User and tools sit beside the central orchestrator.
+    \pibox{USER}{A bounded request\\what should change}
+      & \pibiarrows
+      & \pibox{PI}{Maintains state\\routes the work}
+      & \pibiarrows
+      & \pibox{TOOLS}{read, write, edit, bash\\what can act}\\[0.25em]
+    % Resources shape Pi from below; tools exchange evidence with the project.
+    & & \piuparrow & & \piudarrow \\
+    & & \pibox{RESOURCES}{Skills, rules, prompts\\shape behavior}
+      & & \pibox{PROJECT}{Files, Git, tests\\where evidence lives}
   \end{tabular}
   \end{center}\piwire
 }
 
 \newcommand{\pifirstsession}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{01 · PROJECT}{Start in the right directory}\piarrows
   \pibox{02 · INSPECT}{Ask for a summary and checks}\piarrows
@@ -257,17 +323,45 @@
   \end{center}\piwire
 }
 
+% Tool boxes in \pitoolmap are pinned to a fixed height so all four
+% render identically no matter how their descriptions wrap.
+\newcommand{\pitoolbox}[2]{%
+  \fcolorbox{piline}{white}{%
+    \parbox[c][4em][c]{0.18\textwidth}{%%
+      \vspace{3pt}
+      {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
+      \vspace{2pt}
+      {\footnotesize\color{pibody}#2\par}
+      \vspace{3pt}%
+    }%
+  }%
+}
+
+% Two tool stacks flank the centered PI box, each tool routing into
+% Pi with the same reusable arrows as the other diagrams.
 \newcommand{\pitoolmap}{%
-  \begin{center}\renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{ccc}
-    & \pibox{MODEL}{Decides what to request} & \\[0.15em]
-    & {\color{pimut}\Large$\downarrow$} & \\[0.15em]
-    \pibox{read}{Inspect files and images} & \pibox{PI}{Routes explicit actions\\four focused capabilities} & \pibox{write}{Create or replace deliberately}\\[0.35em]
-    \pibox{edit}{Apply a precise patch} & & \pibox{bash}{Run checks and commands}
-  \end{tabular}\end{center}\piwire
+  \vspace{0.85em}
+  \begin{center}\small
+  \begin{tabular}{@{}c@{}}
+    \pibox{MODEL}{Decides what to request}\\[0.3em]
+    \pidownarrow\\[0.3em]
+    \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
+      \begin{tabular}{@{}c@{}}
+        \pitoolbox{read}{Inspect files and images}\piarrows\\[0.6em]
+        \pitoolbox{edit}{Apply a precise patch}\piarrows
+      \end{tabular} &
+      \pibox{PI}{Routes explicit actions\\four focused capabilities} &
+      \begin{tabular}{@{}c@{}}
+        \pilarrows\pitoolbox{write}{Create or replace deliberately}\\[0.6em]
+        \pilarrows\pitoolbox{bash}{Run checks and commands}
+      \end{tabular}
+    \end{tabular}
+  \end{tabular}
+  \end{center}\piwire
 }
 
 \newcommand{\piinspectflow}{%
+  \vspace{0.85em}
   \begin{center}\small
   \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
     \pibox{01 · LOCATE}{Find files and entry points} & \piarrows & \pibox{02 · UNDERSTAND}{Explain behavior and constraints} & \piarrows & \pibox{03 · PLAN}{Bound the work before editing}\\[0.45em]
@@ -278,6 +372,7 @@
 }
 
 \newcommand{\pitrust}{%
+  \vspace{0.85em}
   \begin{center}\renewcommand{\arraystretch}{1.2}
   \begin{tabular}{ccc}
     \pibox{PROJECT TRUST}{Trust decision} & \piarrows & \pibox{WHAT LOADS}{Settings, skills, packages}\\[0.45em]
@@ -286,6 +381,7 @@
 }
 
 \newcommand{\pigitcheckpoint}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{CHECKPOINT}{Create a reversible branch}\piarrows
   \pibox{PI WORKS}{Bound the task and change files}\piarrows
@@ -295,6 +391,7 @@
 }
 
 \newcommand{\pisessions}{%
+  \vspace{0.85em}
   \begin{center}\renewcommand{\arraystretch}{1.2}
   \piwidebox{SESSION}{release-audit — original path preserved}\\[0.2em]
   {\color{pimut}\Large$\swarrow\hspace{2.5em}\searrow$}\\[0.1em]
@@ -305,6 +402,7 @@
 }
 
 \newcommand{\picompaction}{%
+  \vspace{0.85em}
   \begin{center}
   \pibox{ACTIVE CONTEXT}{Recent conversation, tool output, decisions, and open work.} \piarrows
   \pibox{LOSSY SUMMARY}{Older conversation compressed into what still matters.}\\[0.45em]
@@ -313,6 +411,7 @@
 }
 
 \newcommand{\piprintmode}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{PROMPT}{One-shot request}\piarrows
   \pibox{PI}{Read-only allowlist\\read, grep, find, ls}\piarrows
@@ -321,6 +420,7 @@
 }
 
 \newcommand{\pijsonmode}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{PI}{Streaming events}\piarrows
   \pibox{JSON STREAM}{Deltas by content index\par\texttt{message\_end} is final authority}\piarrows
@@ -329,6 +429,7 @@
 }
 
 \newcommand{\pioutputmode}[3]{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{PI · #1}{No interactive UI}\piarrows
   \pibox{OUTPUT}{#2}\piarrows
@@ -337,6 +438,7 @@
 }
 
 \newcommand{\pistack}{%
+  \vspace{0.85em}
   \begin{center}
   \piwidebox{PACKAGES}{Share resources through npm, Git, or a local path}\\[0.25em]
   \piwidebox{EXTENSIONS}{Add tools, commands, events, UI, and gates}\\[0.25em]
@@ -348,6 +450,7 @@
 }
 
 \newcommand{\pigate}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{TOOL CALL}{A bash command is requested}\piarrows
   \pibox{GATE}{Inspect the command and ask for confirmation}\piarrows
@@ -356,6 +459,7 @@
 }
 
 \newcommand{\pilocalmodel}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{PI}{Same agent workflow}\piarrows
   \pibox{API ROUTE}{OpenAI-compatible localhost endpoint}\piarrows
@@ -364,6 +468,7 @@
 }
 
 \newcommand{\pisdk}{%
+  \vspace{0.85em}
   \begin{center}\small
   \pibox{APPLICATION}{Node or TypeScript product}\piarrows
   \pibox{SDK SESSION}{State, events, and prompts}\piarrows
@@ -372,6 +477,7 @@
 }
 
 \newcommand{\pisandbox}{%
+  \vspace{0.85em}
   \begin{center}\renewcommand{\arraystretch}{1.2}
   \begin{tabular}{@{}p{0.22\textwidth}p{0.68\textwidth}@{}}
     {\sffamily\footnotesize\bfseries\color{piaccent}HOST} & Project and credentials remain outside the container boundary.\\[0.35em]
