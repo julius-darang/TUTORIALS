@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"><title>meet-pi</title><desc>Pi Coding Agent tutorial by Julius Darang. Slide 1 of 8. Editable vector artwork.</desc>
+<rect x="0" y="0" width="1080" height="1440" fill="#131414" id="background"/>
+<text id="series-label" x="88" y="79" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PI / FIELD NOTES</text>
+<text x="992" y="79" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="end">JULIUS DARANG</text>
+<line x1="88" y1="117" x2="992" y2="117" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="316" font-family="STIX Two Text" font-size="160" font-weight="500" fill="#e8e7e3" text-anchor="start">Meet Pi.</text>
+<text x="92" y="397" font-family="STIX Two Text" font-size="48" font-weight="400" fill="#b6b5af" text-anchor="start">Your coding agent.</text>
+<text x="92" y="458" font-family="STIX Two Text" font-size="48" font-weight="400" fill="#b6b5af" text-anchor="start">Your way of working.</text>
+<g id="cover-cube-grid">
+<g transform="translate(234 600) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(442 600) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(650 600) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(234 774) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(442 774) scale(1.15)" fill="none" stroke="#d77600" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(650 774) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(234 948) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(442 948) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(650 948) scale(1.15)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+</g>
+<text x="88" y="1190" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">A PRACTICAL STARTER GUIDE</text>
+<text x="88" y="1246" font-family="STIX Two Text" font-size="37" font-weight="400" fill="#e8e7e3" text-anchor="start">From first prompt to a change you can verify.</text>
+<g id="footer">
+<line x1="88" y1="1321" x2="992" y2="1321" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="start">@juliusdarang</text>
+<text x="992" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="end">01 / 08</text>
+<rect x="438" y="1361" width="14" height="3" fill="#d77600"/>
+<rect x="464" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="490" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="516" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="542" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="568" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="594" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="620" y="1361" width="14" height="3" fill="#41423e"/>
+</g>
+</svg>
