@@ -2,11 +2,9 @@
 
 ## Build your coding workflow around a small terminal agent
 
-There are many coding agents.
+By the end of this guide, you will be able to inspect a repository, complete one bounded change, and verify the result with Pi. You will also learn how to turn repeated work into reusable project instructions, skills, and extensions.
 
-This one is mine.
-
-Not because Pi is the biggest coding agent, or because it has the most features. The opposite is the point: Pi keeps the core small and lets you shape the workflow around the way you already work.
+Pi keeps the core small so you can shape the workflow around the way you already work.
 
 Pi is a terminal coding harness. It connects a language model to a local project and gives that model a small set of tools:
 
@@ -19,9 +17,19 @@ From there, you can add project instructions, reusable skills, prompt templates,
 
 \pimentalmodel
 
-This tutorial walks through the complete workflow: installation, authentication, your first repository task, project context, sessions, safety, automation, and customization.
+Read the arrows as exchanges: Pi connects the user, model, and tools. Project resources supply instructions; tools read or change the project.
 
----
+### How to use this guide
+
+Start with a terminal, Node.js and npm, access to a model provider, and a repository whose checks you can run. The shell examples use Bash-style syntax; adapt paths and environment-variable commands to your shell.
+
+- **Foundations, lessons 1–9:** install Pi, run a first task, and set project boundaries.
+- **Operating workflow, lessons 10–14:** use Git, sessions, context, and models deliberately.
+- **Automation and customization, lessons 15–22:** choose an output mode and add reusable resources.
+- **Integration and shipping, lessons 23–28:** connect models, embed Pi, isolate work, and complete the capstone.
+
+For a first pass, work through lessons 1–10 and then try the capstone in lesson 26. Return to automation and integrations when a repeated task calls for them.
+
 
 ## 1. Install Pi
 
@@ -56,7 +64,6 @@ pi
 
 Do not start an agent in an arbitrary directory and expect it to understand your project. The current working directory is part of the agent's context.
 
----
 
 ## 2. Authenticate with a model provider
 
@@ -111,7 +118,6 @@ pi --list-models
 
 The model is replaceable. Your project workflow should not be tightly coupled to one provider.
 
----
 
 ## 3. Run your first session
 
@@ -140,13 +146,14 @@ A coding agent is most useful when you give it a clear boundary. “Improve this
 
 \pifirstsession
 
----
 
 ## 4. Understand the four default tools
 
 Pi gives the model four default tools.
 
 \pitoolmap
+
+Choose the tool by the operation: inspect, replace, patch, or execute. Each tool result returns to the agent as evidence.
 
 ### `read`
 
@@ -174,13 +181,12 @@ This gives the model `read`, `grep`, `find`, and `ls` — not `bash`, `edit`, or
 
 The small tool set is intentional. Pi does not try to hide all activity behind a large collection of abstractions. You can see which actions are available and shape the rest yourself.
 
----
 
 ## 5. Inspect before you edit
 
 The most reliable Pi workflow is:
 
-> Locate → understand → change → verify.
+> Locate and understand → plan → change → verify.
 
 \piinspectflow
 
@@ -210,7 +216,6 @@ Review the current diff against the original requirement. Run the relevant check
 
 This separation matters. The agent can inspect, reason, edit, and test. You should still decide whether the result is correct.
 
----
 
 ## 6. Prompt for a result
 
@@ -244,7 +249,6 @@ This is more useful than asking Pi to “make the code better.”
 
 The quality of the result depends partly on the quality of the boundary. If the task is ambiguous, ask Pi to identify the ambiguity instead of silently choosing an architecture.
 
----
 
 ## 7. Attach files and run commands
 
@@ -272,7 +276,6 @@ Use `!!` when you want to run a command without sending its output to the model:
 
 This distinction helps keep the context useful. Not every command result needs to become part of the conversation.
 
----
 
 ## 8. Give the project permanent instructions
 
@@ -309,7 +312,6 @@ Or restart Pi.
 
 Use context files for durable project rules: commands, conventions, constraints, and safety boundaries. Do not use them as a dumping ground for every thought from every session.
 
----
 
 ## 9. Understand project trust
 
@@ -339,7 +341,6 @@ For an untrusted repository, generated code you will not monitor closely, or una
 
 Treat repository instructions, comments, documentation, and build output as possible prompt-injection surfaces. Read them as code and configuration, not as authority.
 
----
 
 ## 10. Use Git as your checkpoint
 
@@ -376,7 +377,6 @@ Pi can make a commit if you explicitly ask it to, but you do not need to give it
 
 \pigitcheckpoint
 
----
 
 ## 11. Use the interactive commands
 
@@ -425,7 +425,6 @@ set -g extended-keys-format csi-u
 
 Then restart the tmux server.
 
----
 
 ## 12. Treat sessions as recoverable work
 
@@ -461,7 +460,8 @@ Session history is useful, but it is not a replacement for project documentation
 
 \pisessions
 
----
+Session branches preserve conversation paths. Use Git separately to preserve and compare file changes.
+
 
 ## 13. Manage a long context
 
@@ -499,7 +499,8 @@ Context management is partly an agent feature and partly an engineering discipli
 
 \picompaction
 
----
+Keep durable decisions in project files, issues, or commits so they remain available beyond the active context.
+
 
 ## 14. Select models and thinking levels
 
@@ -528,7 +529,6 @@ A practical rule:
 
 Check the footer or run `/session` to see the current model, context usage, tokens, and cost. Do not guess which model is active.
 
----
 
 ## 15. Use print mode for one-shot work
 
@@ -554,7 +554,6 @@ Print mode is useful in scripts and CI, but model output is still untrusted inpu
 
 \piprintmode
 
----
 
 ## 16. Use JSON event mode for observability
 
@@ -587,7 +586,6 @@ Use JSON mode when you need structured output from a one-shot process but do not
 
 \pijsonmode
 
----
 
 ## 17. Integrate with RPC mode
 
@@ -620,7 +618,6 @@ For a Node or TypeScript application in the same process, the SDK is usually mor
 
 \pioutputmode{RPC}{JSON over stdin and stdout}{Your application process}
 
----
 
 ## 18. Add a skill
 
@@ -660,7 +657,8 @@ Use skills for reusable, on-demand procedures. Use `AGENTS.md` for rules that sh
 
 \pistack
 
----
+Read these layers as customization choices, not an execution sequence. Add only the resource your repeated workflow needs.
+
 
 ## 19. Turn prompts into commands
 
@@ -693,7 +691,6 @@ Templates support positional arguments such as `$1` and `$2`, as well as `$@` fo
 
 A good template captures a repeatable workflow. It should not become a giant personality prompt. Keep it specific enough that the output is consistent and useful.
 
----
 
 ## 20. Use extensions for behavior
 
@@ -739,7 +736,6 @@ Or place it in a discovered extension directory such as:
 
 Extensions are powerful because they are ordinary code with access to the same local environment as Pi. Review them like any other dependency.
 
----
 
 ## 21. Add a safety gate
 
@@ -777,7 +773,6 @@ The goal is not to create the illusion of safety. The goal is to make important 
 
 \pigate
 
----
 
 ## 22. Share a Pi package
 
@@ -830,7 +825,6 @@ pi install -l npm:@your-org/pi-tools
 
 Review package source before installing it. Extensions execute code with your permissions, and skills can instruct the agent to perform actions.
 
----
 
 ## 23. Connect a local or custom model
 
@@ -870,7 +864,6 @@ Custom model configuration is useful for local inference, private gateways, prox
 
 \pilocalmodel
 
----
 
 ## 24. Embed Pi with the SDK
 
@@ -927,7 +920,6 @@ Use RPC when you want a language-agnostic process boundary. Use the SDK when you
 
 \pisdk
 
----
 
 ## 25. Sandbox untrusted work
 
@@ -968,7 +960,6 @@ For stronger isolation, use a VM, micro-VM, or policy-controlled sandbox.
 
 \pisandbox
 
----
 
 ## 26. The capstone workflow
 
@@ -1025,7 +1016,6 @@ git commit -m "Validate imported CSV rows"
 
 The agent helped produce the change. The evidence is the test output and the diff.
 
----
 
 ## 27. Troubleshooting
 
@@ -1068,7 +1058,6 @@ Stop. Inspect the diff. Revert deliberately if necessary. Then tighten the promp
 
 Do not respond to a wrong change by giving the agent a larger, more emotional prompt. Give it a narrower one.
 
----
 
 ## 28. The operating checklist
 
@@ -1098,7 +1087,6 @@ After the task:
 
 Customize Pi only after you have repeated the workflow enough to know what should be automated.
 
----
 
 ## Final thought
 
@@ -1118,7 +1106,6 @@ Keep the boundary yours.
 
 **Inspect. Shape. Verify.**
 
----
 
 ## Official references
 
