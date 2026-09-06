@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"><title>small-core</title><desc>Pi Coding Agent tutorial by Julius Darang. Slide 2 of 8. Editable vector artwork.</desc>
+<rect x="0" y="0" width="1080" height="1440" fill="#131414" id="background"/>
+<text id="series-label" x="88" y="79" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PI / FIELD NOTES</text>
+<text x="992" y="79" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="end">JULIUS DARANG</text>
+<line x1="88" y1="117" x2="992" y2="117" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="190" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">THE IDEA</text>
+<text x="88" y="295" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">A small core.</text>
+<text x="88" y="391" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">Room to make it yours.</text>
+<text x="88" y="487" font-family="STIX Two Text" font-size="39" font-weight="400" fill="#b6b5af" text-anchor="start">Pi connects a model to your project</text>
+<text x="88" y="539" font-family="STIX Two Text" font-size="39" font-weight="400" fill="#b6b5af" text-anchor="start">through a few visible tools.</text>
+<g id="tool-grid">
+<rect x="88" y="641" width="438" height="185" fill="#1c1e1d"/>
+<line x1="88" y1="641" x2="88" y2="826" stroke="#d77600" stroke-width="3"/>
+<text x="116" y="690" font-family="JetBrains Mono" font-size="30" font-weight="400" fill="#d77600" text-anchor="start">read</text>
+<text x="116" y="746" font-family="STIX Two Text" font-size="47" font-weight="400" fill="#e8e7e3" text-anchor="start">Inspect</text>
+<text x="116" y="792" font-family="STIX Two Text" font-size="29" font-weight="400" fill="#b6b5af" text-anchor="start">Files and images</text>
+<rect x="554" y="641" width="438" height="185" fill="#1c1e1d"/>
+<line x1="554" y1="641" x2="554" y2="826" stroke="#d77600" stroke-width="3"/>
+<text x="582" y="690" font-family="JetBrains Mono" font-size="30" font-weight="400" fill="#d77600" text-anchor="start">write</text>
+<text x="582" y="746" font-family="STIX Two Text" font-size="47" font-weight="400" fill="#e8e7e3" text-anchor="start">Create</text>
+<text x="582" y="792" font-family="STIX Two Text" font-size="29" font-weight="400" fill="#b6b5af" text-anchor="start">New or replacement files</text>
+<rect x="88" y="854" width="438" height="185" fill="#1c1e1d"/>
+<line x1="88" y1="854" x2="88" y2="1039" stroke="#d77600" stroke-width="3"/>
+<text x="116" y="903" font-family="JetBrains Mono" font-size="30" font-weight="400" fill="#d77600" text-anchor="start">edit</text>
+<text x="116" y="959" font-family="STIX Two Text" font-size="47" font-weight="400" fill="#e8e7e3" text-anchor="start">Patch</text>
+<text x="116" y="1005" font-family="STIX Two Text" font-size="29" font-weight="400" fill="#b6b5af" text-anchor="start">Focused file changes</text>
+<rect x="554" y="854" width="438" height="185" fill="#1c1e1d"/>
+<line x1="554" y1="854" x2="554" y2="1039" stroke="#d77600" stroke-width="3"/>
+<text x="582" y="903" font-family="JetBrains Mono" font-size="30" font-weight="400" fill="#d77600" text-anchor="start">bash</text>
+<text x="582" y="959" font-family="STIX Two Text" font-size="47" font-weight="400" fill="#e8e7e3" text-anchor="start">Run</text>
+<text x="582" y="1005" font-family="STIX Two Text" font-size="29" font-weight="400" fill="#b6b5af" text-anchor="start">Commands and checks</text>
+</g>
+<text x="88" y="1140" font-family="STIX Two Text" font-size="35" font-weight="400" fill="#e8e7e3" text-anchor="start">You define the goal. Pi works through the tools.</text>
+<text x="88" y="1192" font-family="STIX Two Text" font-size="35" font-weight="400" fill="#b6b5af" text-anchor="start">Skills and extensions let you shape the workflow.</text>
+<g id="footer">
+<line x1="88" y1="1321" x2="992" y2="1321" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="start">@juliusdarang</text>
+<text x="992" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="end">02 / 08</text>
+<rect x="438" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="464" y="1361" width="14" height="3" fill="#d77600"/>
+<rect x="490" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="516" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="542" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="568" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="594" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="620" y="1361" width="14" height="3" fill="#41423e"/>
+</g>
+</svg>
