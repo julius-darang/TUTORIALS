@@ -4,6 +4,8 @@
 \usepackage{fontspec}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{etoolbox}
 \usepackage{geometry}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -18,7 +20,7 @@
 % Keep the visual language aligned with the tutorial decks.
 \definecolor{piaccent}{HTML}{D77600}
 \definecolor{piblue}{HTML}{4A90D9}
-\definecolor{pimut}{HTML}{7A7A78}
+\definecolor{pimut}{HTML}{60605E}
 \definecolor{piblack}{HTML}{0A0A0A}
 \definecolor{pibody}{HTML}{242424}
 \definecolor{picode}{HTML}{F3F0EB}
@@ -44,7 +46,6 @@
 % Loaded from the TeX Live static instances by file: the macOS system copy
 % is a variable font that XeLaTeX cannot resolve by family name alone.
 \newfontfamily\displayfont{STIXTwoText-Regular}[
-  Path=/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/opentype/public/stix2-otf/,
   Extension=.otf,
   UprightFont=STIXTwoText-Regular,
   BoldFont=STIXTwoText-SemiBold,
@@ -52,9 +53,19 @@
   BoldItalicFont=STIXTwoText-SemiBoldItalic
 ]
 \renewcommand{\familydefault}{\sfdefault}
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{11}{14}}
+\renewcommand\small{\@setfontsize\small{10}{12.5}}
+\makeatother
+\AtBeginDocument{\normalsize}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.85em}
-\linespread{1.18}
+\setlength{\parskip}{0.6em}
+\linespread{1.12}
+\emergencystretch=2em
+\clubpenalty=10000
+\widowpenalty=10000
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.18}
 
 \hypersetup{
   colorlinks=true,
@@ -70,10 +81,10 @@
   {\Large\sffamily\bfseries\color{piaccent}}
   {}{0pt}{}
 \titleformat{\subsection}
-  {\large\sffamily\bfseries\color{pibody}}
+  {\large\sffamily\bfseries\color{piaccent}}
   {}{0pt}{}
 \titleformat{\subsubsection}
-  {\normalsize\sffamily\bfseries\color{pimut}}
+  {\normalsize\sffamily\bfseries\color{pibody}}
   {}{0pt}{}
 \titlespacing*{\section}{0pt}{2.6em}{0.75em}
 \titlespacing*{\subsection}{0pt}{1.7em}{0.45em}
@@ -223,13 +234,25 @@
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\small,breaklines=true,breakanywhere=true,commandchars=\\\{\}}
 \setlength{\fboxsep}{8pt}
 
+% Keep examples together and visibly separate from prose.
+\AtBeginDocument{%
+  \renewenvironment{Shaded}{\par\addvspace{.5em}\noindent\begin{minipage}{\linewidth}\begin{snugshade}}{\end{snugshade}\end{minipage}\par\addvspace{.5em}}%
+}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\small,breaklines=true,breakanywhere=true}
+\BeforeBeginEnvironment{verbatim}{\par\addvspace{.4em}\noindent\begin{minipage}{\linewidth}}
+\AfterEndEnvironment{verbatim}{\end{minipage}\par\addvspace{.4em}}
+
 % Lists should breathe without becoming slide-like.
 \setlist[itemize]{leftmargin=1.35em,itemsep=0.45em,topsep=0.5em,parsep=0.3em}
 \setlist[enumerate]{leftmargin=1.55em,itemsep=0.45em,topsep=0.5em,parsep=0.3em}
 
+% Keep short checklist groups intact across page boundaries.
+\BeforeBeginEnvironment{itemize}{\begin{samepage}}
+\AfterEndEnvironment{itemize}{\end{samepage}}
+
 % Make blockquotes read as practical callouts.
 \renewenvironment{quote}{%
-  \begin{leftbar}\small\color{pimut}
+  \begin{leftbar}\small\color{pibody}
 }{%
   \end{leftbar}
 }
@@ -241,247 +264,77 @@
 \let\pioriginaltableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{\pioriginaltableofcontents\clearpage}
 
-% Explanatory visuals shared with the Marp deck. These are deliberately
-% text-first so the vertical PDF remains searchable, printable, and robust.
-\newcommand{\pibox}[2]{%
-  \fcolorbox{piline}{white}{%
-    \parbox[c]{0.18\textwidth}{%%
-      \vspace{3pt}
-      {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
-      \vspace{2pt}
-      {\footnotesize\color{pibody}#2\par}
-      \vspace{3pt}%
-    }%
-  }%
-}
-\newcommand{\pihumanbox}[2]{%
-  \fcolorbox{piaccent}{white}{%
-    \parbox[c]{0.18\textwidth}{%%
-      \vspace{3pt}
-      {\sffamily\footnotesize\bfseries\color{piaccent}HUMAN-OWNED GATE\par}
-      \vspace{2pt}
-      {\sffamily\footnotesize\bfseries\color{pibody}#1\par}
-      \vspace{2pt}
-      {\footnotesize\color{pibody}#2\par}
-      \vspace{3pt}%
-    }%
-  }%
-}
-\newcommand{\piwidebox}[2]{%
-  \fcolorbox{piline}{white}{%
-    \parbox[c]{0.82\textwidth}{%%
-      \vspace{3pt}
-      {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
-      \vspace{2pt}
-      {\footnotesize\color{pibody}#2\par}
-      \vspace{3pt}%
-    }%
-  }%
-}
-\newcommand{\piarrows}{\hspace{3pt}{\color{pimut}\Large$\rightarrow$}\hspace{3pt}}
-\newcommand{\pilarrows}{\hspace{3pt}{\color{pimut}\Large$\leftarrow$}\hspace{3pt}}
-\newcommand{\pibiarrows}{\hspace{3pt}{\color{pimut}\Large$\leftrightarrow$}\hspace{3pt}}
-\newcommand{\piudarrow}{{\color{pimut}\Large$\updownarrow$}}
-\newcommand{\piuparrow}{{\color{pimut}\Large$\uparrow$}}
-\newcommand{\pidownarrow}{{\color{pimut}\Large$\downarrow$}}
-% Diagrams get generous breathing room above and below so they read as
-% anchored figures, not inline clutter.
-\newcommand{\piwire}{\vspace{1.35em}\par}
 
+% Vector diagrams: consistent cards, explicit connections, readable labels.
+% Widths include padding; the largest diagram stays inside the A4 text area.
+\tikzset{
+  picard/.style={draw=piline,fill=picode,rounded corners=2pt,
+    text width=4.35cm,minimum height=1.65cm,inner sep=8pt,
+    align=left,font=\small,text=pibody,line width=.6pt},
+  pihub/.style={picard,draw=piaccent,fill=piaccent!7,line width=.9pt},
+  piflow/.style={-{Stealth[length=2.3mm]},draw=pimut,line width=.8pt},
+  piexchange/.style={{Stealth[length=2.3mm]}-{Stealth[length=2.3mm]},draw=pimut,line width=.8pt}
+}
+\newenvironment{pifigure}{\par\addvspace{.6em}\noindent\begin{minipage}{\linewidth}\centering}{\end{minipage}\par\addvspace{.8em}}
+\newcommand{\pilabel}[2]{{\bfseries\color{pibody}#1}\\[4pt]#2}
+\newcommand{\pithree}[6]{%
+  \begin{pifigure}\begin{tikzpicture}
+    \node[picard] (a) {\pilabel{#1}{#2}};
+    \node[picard,right=6mm of a] (b) {\pilabel{#3}{#4}};
+    \node[picard,right=6mm of b] (c) {\pilabel{#5}{#6}};
+    \draw[piflow] (a)--(b); \draw[piflow] (b)--(c);
+  \end{tikzpicture}\end{pifigure}}
+% Four-stage workflows use full-width rows so descriptions never squeeze.
+\newcommand{\pifour}[8]{%
+  \begin{pifigure}\begin{tikzpicture}
+    \node[picard,text width=13.8cm,minimum height=1cm] (a) {\textbf{#1}\quad #2};
+    \node[picard,text width=13.8cm,minimum height=1cm,below=5mm of a] (b) {\textbf{#3}\quad #4};
+    \node[picard,text width=13.8cm,minimum height=1cm,below=5mm of b] (c) {\textbf{#5}\quad #6};
+    \node[pihub,text width=13.8cm,minimum height=1cm,below=5mm of c] (d) {\textbf{#7}\quad #8};
+    \draw[piflow] (a)--(b); \draw[piflow] (b)--(c); \draw[piflow] (c)--(d);
+  \end{tikzpicture}\end{pifigure}}
 \newcommand{\pimentalmodel}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  % Hub-and-spoke layout: Pi is central, with model, tools, resources,
-  % user intent, and project evidence around it rather than in one chain.
-  \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
-    % Pi supplies context to the model and receives a response or tool call.
-    & & \pibox{MODEL}{Prompts and reasoning\\what proposes} & & \\
-    & & \piudarrow & & \\
-    % User and tools sit beside the central orchestrator.
-    \pibox{USER}{A bounded request\\what should change}
-      & \pibiarrows
-      & \pibox{PI}{Maintains state\\routes the work}
-      & \pibiarrows
-      & \pibox{TOOLS}{read, write, edit, bash\\what can act}\\[0.25em]
-    % Resources shape Pi from below; tools exchange evidence with the project.
-    & & \piuparrow & & \piudarrow \\
-    & & \pibox{RESOURCES}{Skills, rules, prompts\\shape behavior}
-      & & \pibox{PROJECT}{Files, Git, tests\\where evidence lives}
-  \end{tabular}
-  \end{center}\piwire
-}
-
-\newcommand{\pifirstsession}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{01 · PROJECT}{Start in the right directory}\piarrows
-  \pibox{02 · INSPECT}{Ask for a summary and checks}\piarrows
-  \pibox{03 · ACT}{Give one bounded action}\piarrows
-  \pibox{04 · VERIFY}{Read the response, tools, and result}
-  \\
-  \makebox[0.82\textwidth][r]{\color{pimut}\footnotesize$\circlearrowleft$\; next bounded task}
-  \end{center}\piwire
-}
-
-% Tool boxes in \pitoolmap are pinned to a fixed height so all four
-% render identically no matter how their descriptions wrap.
-\newcommand{\pitoolbox}[2]{%
-  \fcolorbox{piline}{white}{%
-    \parbox[c][4em][c]{0.18\textwidth}{%%
-      \vspace{3pt}
-      {\sffamily\footnotesize\bfseries\color{piaccent}#1\par}
-      \vspace{2pt}
-      {\footnotesize\color{pibody}#2\par}
-      \vspace{3pt}%
-    }%
-  }%
-}
-
-% Two tool stacks flank the centered PI box, each tool routing into
-% Pi with the same reusable arrows as the other diagrams.
+  \begin{pifigure}\begin{tikzpicture}
+    \node[pihub] (pi) {\pilabel{Pi}{Maintains session state and routes the work.}};
+    \node[picard,left=6mm of pi] (user) {\pilabel{User}{Defines the task and reviews the result.}};
+    \node[picard,right=6mm of pi] (tools) {\pilabel{Tools}{Read, write, edit, and run commands.}};
+    \node[picard,above=6mm of pi] (model) {\pilabel{Model}{Receives context; proposes responses and tool calls.}};
+    \node[picard,below=6mm of pi] (resources) {\pilabel{Resources}{Project rules, skills, and prompt templates.}};
+    \node[picard,below=6mm of tools] (project) {\pilabel{Project}{Files, Git history, and test results.}};
+    \draw[piexchange] (user)--(pi); \draw[piexchange] (pi)--(model);
+    \draw[piexchange] (pi)--(tools); \draw[piflow] (resources)--(pi);
+    \draw[piexchange] (tools)--(project);
+  \end{tikzpicture}\end{pifigure}}
+\newcommand{\pifirstsession}{\pifour{01 / Project}{Start in the correct directory.}{02 / Inspect}{Ask for the repository summary and checks.}{03 / Act}{Give one bounded task with acceptance criteria.}{04 / Verify}{Read the tool output, run checks, and inspect the diff.}}
 \newcommand{\pitoolmap}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \begin{tabular}{@{}c@{}}
-    \pibox{MODEL}{Decides what to request}\\[0.3em]
-    \pidownarrow\\[0.3em]
-    \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
-      \begin{tabular}{@{}c@{}}
-        \pitoolbox{read}{Inspect files and images}\piarrows\\[0.6em]
-        \pitoolbox{edit}{Apply a precise patch}\piarrows
-      \end{tabular} &
-      \pibox{PI}{Routes explicit actions\\four focused capabilities} &
-      \begin{tabular}{@{}c@{}}
-        \pilarrows\pitoolbox{write}{Create or replace deliberately}\\[0.6em]
-        \pilarrows\pitoolbox{bash}{Run checks and commands}
-      \end{tabular}
-    \end{tabular}
-  \end{tabular}
-  \end{center}\piwire
-}
-
-\newcommand{\piinspectflow}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \begin{tabular}{@{}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{\hspace{0.015\textwidth}}c@{}}
-    \pibox{01 · LOCATE}{Find files and entry points} & \piarrows & \pibox{02 · UNDERSTAND}{Explain behavior and constraints} & \piarrows & \pibox{03 · PLAN}{Bound the work before editing}\\[0.45em]
-    \multicolumn{5}{c}{\piwidebox{SCOPE BOUNDARY}{Review the plan before editing}}\\[0.45em]
-    \pibox{04 · CHANGE}{Make the smallest patch} & \piarrows & \pibox{05 · VERIFY}{Run checks and inspect the diff} & &
-  \end{tabular}
-  \end{center}\piwire
-}
-
-\newcommand{\pitrust}{%
-  \vspace{0.85em}
-  \begin{center}\renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{ccc}
-    \pibox{PROJECT TRUST}{Trust decision} & \piarrows & \pibox{WHAT LOADS}{Settings, skills, packages}\\[0.45em]
-    \pibox{USER PERMISSIONS}{Account access} & \piarrows & \pibox{WHAT RUNS}{Tools and commands}
-  \end{tabular}\end{center}\piwire
-}
-
-\newcommand{\pigitcheckpoint}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{CHECKPOINT}{Create a reversible branch}\piarrows
-  \pibox{PI WORKS}{Bound the task and change files}\piarrows
-  \pibox{EVIDENCE}{Diff, checks, and tests}\piarrows
-  \pihumanbox{HUMAN DECISION}{Review, then commit what you understand}
-  \end{center}\piwire
-}
-
+  \begin{pifigure}\begin{tikzpicture}
+    \node[pihub,text width=13.8cm,minimum height=1cm] (pi) {\textbf{Model requests an action; Pi executes the selected tool.}};
+    \node[picard,text width=6.45cm,below=8mm of pi.south west,anchor=north west] (read) {\pilabel{read / Inspect}{Read files and images to understand the project.}};
+    \node[picard,text width=6.45cm,right=6mm of read] (write) {\pilabel{write / Create or replace}{Write a new file or replace its entire contents.}};
+    \node[picard,text width=6.45cm,below=5mm of read] (edit) {\pilabel{edit / Patch}{Apply a focused change to an existing file.}};
+    \node[picard,text width=6.45cm,below=5mm of write] (bash) {\pilabel{bash / Run}{Execute shell commands, tests, and builds.}};
+    \draw[piflow] (pi.south -| read.north)--(read.north);
+    \draw[piflow] (pi.south -| write.north)--(write.north);
+    \draw[piflow] (pi.west)--++(-.25,0)|-(edit.west);
+    \draw[piflow] (pi.east)--++(.25,0)|-(bash.east);
+  \end{tikzpicture}\end{pifigure}}
+\newcommand{\piinspectflow}{\pifour{01 / Locate and understand}{Find entry points, constraints, and tests.}{02 / Plan}{Propose the smallest change; review the scope.}{03 / Change}{Implement the agreed patch.}{04 / Verify}{Run checks and compare the diff with the requirement.}}
+\newcommand{\pitrust}{\pithree{Project trust}{Decide whether project resources should load.}{Loaded resources}{Settings, skills, and packages shape behavior.}{Execution boundary}{Tools run with the permissions available to Pi.}}
+\newcommand{\pigitcheckpoint}{\pifour{01 / Checkpoint}{Inspect Git status and create a working branch.}{02 / Pi works}{Bound the task and change the relevant files.}{03 / Evidence}{Read the diff and the check results.}{04 / Human decision}{Stage reviewed files; commit what you understand.}}
 \newcommand{\pisessions}{%
-  \vspace{0.85em}
-  \begin{center}\renewcommand{\arraystretch}{1.2}
-  \piwidebox{SESSION}{release-audit — original path preserved}\\[0.2em]
-  {\color{pimut}\Large$\swarrow\hspace{2.5em}\searrow$}\\[0.1em]
-  \pibox{/fork}{Branch A\\start from an earlier message}\hspace{0.8em}
-  \pibox{/clone}{Branch B\\duplicate before risk}\\[0.4em]
-  \piwidebox{RECOVER}{/resume · /new · /tree · /export}
-  \end{center}\piwire
-}
-
-\newcommand{\picompaction}{%
-  \vspace{0.85em}
-  \begin{center}
-  \pibox{ACTIVE CONTEXT}{Recent conversation, tool output, decisions, and open work.} \piarrows
-  \pibox{LOSSY SUMMARY}{Older conversation compressed into what still matters.}\\[0.45em]
-  \piwidebox{DURABLE MEMORY OUTSIDE THE CONTEXT}{Decisions belong in files, issues, or commits; they survive compaction.}
-  \end{center}\piwire
-}
-
-\newcommand{\piprintmode}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{PROMPT}{One-shot request}\piarrows
-  \pibox{PI}{Read-only allowlist\\read, grep, find, ls}\piarrows
-  \pibox{OUTPUT}{Plain text\\review before action}
-  \end{center}\piwire
-}
-
-\newcommand{\pijsonmode}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{PI}{Streaming events}\piarrows
-  \pibox{JSON STREAM}{Deltas by content index\par\texttt{message\_end} is final authority}\piarrows
-  \pibox{JQ / APP}{Assemble and consume\\filter or observe}
-  \end{center}\piwire
-}
-
-\newcommand{\pioutputmode}[3]{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{PI · #1}{No interactive UI}\piarrows
-  \pibox{OUTPUT}{#2}\piarrows
-  \pibox{NEXT STEP}{#3}
-  \end{center}\piwire
-}
-
-\newcommand{\pistack}{%
-  \vspace{0.85em}
-  \begin{center}
-  \piwidebox{PACKAGES}{Share resources through npm, Git, or a local path}\\[0.25em]
-  \piwidebox{EXTENSIONS}{Add tools, commands, events, UI, and gates}\\[0.25em]
-  \piwidebox{PROMPT TEMPLATES}{Turn repeatable prompts into slash commands}\\[0.25em]
-  \piwidebox{SKILLS}{Load on-demand instructions for a capability}\\[0.25em]
-  \piwidebox{CONTEXT FILES}{Keep project rules always present}\\[0.25em]
-  \piwidebox{PI CORE}{Small, generic, and reusable}
-  \end{center}\piwire
-}
-
-\newcommand{\pigate}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{TOOL CALL}{A bash command is requested}\piarrows
-  \pibox{GATE}{Inspect the command and ask for confirmation}\piarrows
-  \pibox{ALLOW / BLOCK}{Continue or stop with a reason}
-  \end{center}\piwire
-}
-
-\newcommand{\pilocalmodel}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{PI}{Same agent workflow}\piarrows
-  \pibox{API ROUTE}{OpenAI-compatible localhost endpoint}\piarrows
-  \pibox{OLLAMA}{Model runs locally}
-  \end{center}\piwire
-}
-
-\newcommand{\pisdk}{%
-  \vspace{0.85em}
-  \begin{center}\small
-  \pibox{APPLICATION}{Node or TypeScript product}\piarrows
-  \pibox{SDK SESSION}{State, events, and prompts}\piarrows
-  \pibox{PI WORKFLOW}{Model, tools, and project}
-  \end{center}\piwire
-}
-
-\newcommand{\pisandbox}{%
-  \vspace{0.85em}
-  \begin{center}\renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{@{}p{0.22\textwidth}p{0.68\textwidth}@{}}
-    {\sffamily\footnotesize\bfseries\color{piaccent}HOST} & Project and credentials remain outside the container boundary.\\[0.35em]
-    {\sffamily\footnotesize\bfseries\color{piaccent}CONTAINER} & Pi runs with only the workspace, credentials, and network access you pass in.\\[0.35em]
-    {\sffamily\footnotesize\bfseries\color{piaccent}LIMIT} & A mounted workspace can still write through to the host; use a VM or stronger isolation when needed.
-  \end{tabular}\end{center}\piwire
-}
+  \begin{pifigure}\begin{tikzpicture}
+    \node[pihub,text width=10cm] (a) {\pilabel{Original session / release-audit}{Preserve the original path while exploring alternatives.}};
+    \node[picard,text width=6.45cm,below left=8mm and -4.7cm of a] (b) {\pilabel{\texttt{/fork}}{Start a new session from an earlier user message.}};
+    \node[picard,text width=6.45cm,right=6mm of b] (c) {\pilabel{\texttt{/clone}}{Duplicate the current active branch.}};
+    \draw[piflow] (a.south)--++(0,-.35)-|(b.north);
+    \draw[piflow] (a.south)--++(0,-.35)-|(c.north);
+  \end{tikzpicture}\end{pifigure}}
+\newcommand{\picompaction}{\pithree{Active context}{Conversation, tool output, decisions, and open work.}{Compaction}{Summarize older context; retain recent messages.}{Working context}{Continue from the summary and retained messages.}}
+\newcommand{\piprintmode}{\pithree{Prompt}{One request, with a read-only tool allowlist in this example.}{Pi / Print mode}{Run the task without an interactive session UI.}{Text output}{Read and validate the response before taking action.}}
+\newcommand{\pijsonmode}{\pithree{Pi}{Emit session, message, and tool events.}{JSONL stream}{Assemble deltas by content index.}{Consumer}{Use \texttt{message\_end} as the final message authority.}}
+\newcommand{\pioutputmode}[3]{\pithree{Pi / #1}{Headless process.}{Protocol}{#2}{Client}{#3}}
+\newcommand{\pistack}{\begingroup\tikzset{piflow/.style={draw=none}}\pifour{Context files}{Keep durable project rules present.}{Skills and prompts}{Load procedures and reuse task instructions.}{Extensions}{Add tools, commands, events, UI, and gates.}{Packages}{Distribute resources through npm, Git, or a local path.}\endgroup}
+\newcommand{\pigate}{\pithree{Tool request}{A Bash command is requested.}{Gate}{Inspect the command and request confirmation.}{Decision}{Allow execution or block it with a reason.}}
+\newcommand{\pilocalmodel}{\pithree{Pi}{Use the same agent workflow.}{API endpoint}{Route requests to an OpenAI-compatible localhost server.}{Ollama}{Run the model locally.}}
+\newcommand{\pisdk}{\pithree{Application}{A Node or TypeScript product.}{SDK session}{Manage state, events, and prompts.}{Pi workflow}{Connect the model, tools, and project.}}
+\newcommand{\pisandbox}{\pithree{Host}{Choose which files and credentials to expose.}{Container}{Run Pi with the mounts, credentials, and network provided.}{Boundary}{Writable mounts can still change host files.}}
