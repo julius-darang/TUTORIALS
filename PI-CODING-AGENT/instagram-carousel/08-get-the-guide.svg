@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"><title>get-the-guide</title><desc>Pi Coding Agent tutorial by Julius Darang. Slide 8 of 8. Editable vector artwork.</desc>
+<rect x="0" y="0" width="1080" height="1440" fill="#eeeae1" id="background"/>
+<text id="series-label" x="88" y="79" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PI / FIELD NOTES</text>
+<text x="992" y="79" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#575952" text-anchor="end">JULIUS DARANG</text>
+<line x1="88" y1="117" x2="992" y2="117" stroke="#c8c5bb" stroke-width="1.5"/>
+<text x="88" y="190" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">GO FROM STARTER TO WORKFLOW</text>
+<text x="88" y="299" font-family="STIX Two Text" font-size="102" font-weight="500" fill="#171918" text-anchor="start">Build your own</text>
+<text x="88" y="410" font-family="STIX Two Text" font-size="102" font-weight="500" fill="#171918" text-anchor="start">Pi workflow.</text>
+<g id="guide-cover">
+<rect x="88" y="492" width="331" height="450" fill="#090b0a"/>
+<text x="113" y="533" font-family="JetBrains Mono" font-size="16" font-weight="400" fill="#d77600" text-anchor="start">PI CODING AGENT</text>
+<text x="113" y="598" font-family="STIX Two Text" font-size="49" font-weight="500" fill="#e8e7e3" text-anchor="start">Pi Agent</text>
+<g transform="translate(138 691) scale(0.65)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(253 691) scale(0.65)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(138 798) scale(0.65)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<g transform="translate(253 798) scale(0.65)" fill="none" stroke="#e8e7e3" stroke-width="1.8" stroke-linejoin="round">
+<path d="M 0 0 L 78 -34 L 154 0 L 76 37 Z" opacity=".55"/><path d="M 0 0 V 112 L 76 151 L 154 112 V 0 M 76 37 V 151" opacity=".9"/>
+</g>
+<text x="113" y="912" font-family="JetBrains Mono" font-size="14" font-weight="400" fill="#b6b5af" text-anchor="start">JULIUS DARANG</text>
+</g>
+<text x="474" y="540" font-family="JetBrains Mono" font-size="22" font-weight="400" fill="#d77600" text-anchor="start">THE COMPLETE GUIDE</text>
+<text x="474" y="614" font-family="STIX Two Text" font-size="58" font-weight="500" fill="#171918" text-anchor="start">28 lessons.</text>
+<text x="474" y="692" font-family="STIX Two Text" font-size="34" font-weight="400" fill="#171918" text-anchor="start">Setup &amp; first tasks</text>
+<text x="474" y="750" font-family="STIX Two Text" font-size="34" font-weight="400" fill="#171918" text-anchor="start">Project rules &amp; skills</text>
+<text x="474" y="808" font-family="STIX Two Text" font-size="34" font-weight="400" fill="#171918" text-anchor="start">Sessions &amp; automation</text>
+<text x="474" y="866" font-family="STIX Two Text" font-size="34" font-weight="400" fill="#171918" text-anchor="start">Extensions &amp; the SDK</text>
+<text x="88" y="1003" font-family="STIX Two Text" font-size="33" font-weight="400" fill="#575952" text-anchor="start">A practical PDF by Julius Darang.</text>
+<line x1="88" y1="1054" x2="992" y2="1054" stroke="#c8c5bb" stroke-width="1.5"/>
+<text x="88" y="1165" font-family="STIX Two Text" font-size="100" font-weight="500" fill="#171918" text-anchor="start">DM me “PI”</text>
+<text x="91" y="1234" font-family="STIX Two Text" font-size="48" font-weight="400" fill="#171918" text-anchor="start">for the full guide.</text>
+<line x1="893" y1="1193" x2="992" y2="1193" stroke="#171918" stroke-width="2"/>
+<line x1="982" y1="1186" x2="992" y2="1193" stroke="#171918" stroke-width="2"/>
+<line x1="982" y1="1200" x2="992" y2="1193" stroke="#171918" stroke-width="2"/>
+<g id="footer">
+<line x1="88" y1="1321" x2="992" y2="1321" stroke="#c8c5bb" stroke-width="1.5"/>
+<text x="88" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#575952" text-anchor="start">@juliusdarang</text>
+<text x="992" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#575952" text-anchor="end">08 / 08</text>
+<rect x="438" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="464" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="490" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="516" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="542" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="568" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="594" y="1361" width="14" height="3" fill="#c8c5bb"/>
+<rect x="620" y="1361" width="14" height="3" fill="#d77600"/>
+</g>
+</svg>

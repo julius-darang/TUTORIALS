@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"><title>bound-the-task</title><desc>Pi Coding Agent tutorial by Julius Darang. Slide 5 of 8. Editable vector artwork.</desc>
+<rect x="0" y="0" width="1080" height="1440" fill="#131414" id="background"/>
+<text id="series-label" x="88" y="79" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PI / FIELD NOTES</text>
+<text x="992" y="79" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="end">JULIUS DARANG</text>
+<line x1="88" y1="117" x2="992" y2="117" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="190" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">03 / MAKE A CHANGE</text>
+<text x="88" y="295" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">One task.</text>
+<text x="88" y="391" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">A clear finish line.</text>
+<text x="88" y="478" font-family="STIX Two Text" font-size="36" font-weight="400" fill="#b6b5af" text-anchor="start">Give Pi a result and the rules for getting there.</text>
+<g id="bounded-task-example">
+<rect x="88" y="551" width="904" height="508" fill="#1c1e1d" stroke="#41423e" stroke-width="1.5"/>
+<text x="120" y="600" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">EXAMPLE / CSV IMPORTER</text>
+<text x="120" y="675" font-family="STIX Two Text" font-size="43" font-weight="400" fill="#e8e7e3" text-anchor="start">Add validation for invalid CSV rows.</text>
+<line x1="120" y1="709" x2="960" y2="709" stroke="#41423e" stroke-width="1.5"/>
+<text x="120" y="769" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">KEEP</text>
+<text x="268" y="769" font-family="STIX Two Text" font-size="36" font-weight="400" fill="#e8e7e3" text-anchor="start">Preserve the public API.</text>
+<text x="120" y="846" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">AVOID</text>
+<text x="268" y="846" font-family="STIX Two Text" font-size="36" font-weight="400" fill="#e8e7e3" text-anchor="start">No new runtime dependency.</text>
+<text x="120" y="923" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PROVE</text>
+<text x="268" y="923" font-family="STIX Two Text" font-size="36" font-weight="400" fill="#e8e7e3" text-anchor="start">Run the existing importer tests.</text>
+<text x="120" y="1015" font-family="STIX Two Text" font-size="33" font-weight="400" fill="#b6b5af" text-anchor="start">First explain the plan. Then make the change.</text>
+</g>
+<text x="88" y="1161" font-family="STIX Two Text" font-size="37" font-weight="400" fill="#b6b5af" text-anchor="start">A useful prompt makes success observable.</text>
+<text x="88" y="1212" font-family="STIX Two Text" font-size="37" font-weight="400" fill="#b6b5af" text-anchor="start">Name what must change—and what must hold.</text>
+<g id="footer">
+<line x1="88" y1="1321" x2="992" y2="1321" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="start">@juliusdarang</text>
+<text x="992" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="end">05 / 08</text>
+<rect x="438" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="464" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="490" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="516" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="542" y="1361" width="14" height="3" fill="#d77600"/>
+<rect x="568" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="594" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="620" y="1361" width="14" height="3" fill="#41423e"/>
+</g>
+</svg>

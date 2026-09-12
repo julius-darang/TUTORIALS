@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"><title>inspect-first</title><desc>Pi Coding Agent tutorial by Julius Darang. Slide 4 of 8. Editable vector artwork.</desc>
+<rect x="0" y="0" width="1080" height="1440" fill="#131414" id="background"/>
+<text id="series-label" x="88" y="79" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PI / FIELD NOTES</text>
+<text x="992" y="79" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="end">JULIUS DARANG</text>
+<line x1="88" y1="117" x2="992" y2="117" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="190" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">02 / FIRST PROMPT</text>
+<text x="88" y="295" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">Let it look</text>
+<text x="88" y="391" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">before it edits.</text>
+<text x="88" y="478" font-family="STIX Two Text" font-size="39" font-weight="400" fill="#b6b5af" text-anchor="start">Begin with a request you can check.</text>
+<g id="inspection-prompt">
+<line x1="88" y1="551" x2="88" y2="820" stroke="#d77600" stroke-width="4"/>
+<text x="120" y="587" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">TRY THIS PROMPT</text>
+<text x="120" y="662" font-family="STIX Two Text" font-size="42" font-weight="400" fill="#e8e7e3" text-anchor="start">Summarize this repository.</text>
+<text x="120" y="719" font-family="STIX Two Text" font-size="42" font-weight="400" fill="#e8e7e3" text-anchor="start">Find the entry points and tests.</text>
+<text x="120" y="776" font-family="STIX Two Text" font-size="42" font-weight="400" fill="#e8e7e3" text-anchor="start">Tell me how to run the checks.</text>
+<text x="120" y="833" font-family="STIX Two Text" font-size="42" font-weight="400" fill="#e8e7e3" text-anchor="start">Do not edit anything yet.</text>
+</g>
+<g id="note-A">
+<text x="88" y="950" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">A</text>
+<text x="159" y="950" font-family="STIX Two Text" font-size="42" font-weight="500" fill="#e8e7e3" text-anchor="start">Read the answer.</text>
+<text x="159" y="1005" font-family="STIX Two Text" font-size="34" font-weight="400" fill="#b6b5af" text-anchor="start">Does it name real files and commands?</text>
+</g>
+<g id="note-B">
+<text x="88" y="1120" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">B</text>
+<text x="159" y="1120" font-family="STIX Two Text" font-size="42" font-weight="500" fill="#e8e7e3" text-anchor="start">Check the evidence.</text>
+<text x="159" y="1175" font-family="STIX Two Text" font-size="34" font-weight="400" fill="#b6b5af" text-anchor="start">Open the files. Read the tool output.</text>
+</g>
+<g id="footer">
+<line x1="88" y1="1321" x2="992" y2="1321" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="start">@juliusdarang</text>
+<text x="992" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="end">04 / 08</text>
+<rect x="438" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="464" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="490" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="516" y="1361" width="14" height="3" fill="#d77600"/>
+<rect x="542" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="568" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="594" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="620" y="1361" width="14" height="3" fill="#41423e"/>
+</g>
+</svg>

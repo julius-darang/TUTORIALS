@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"><title>get-running</title><desc>Pi Coding Agent tutorial by Julius Darang. Slide 3 of 8. Editable vector artwork.</desc>
+<rect x="0" y="0" width="1080" height="1440" fill="#131414" id="background"/>
+<text id="series-label" x="88" y="79" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#d77600" text-anchor="start">PI / FIELD NOTES</text>
+<text x="992" y="79" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="end">JULIUS DARANG</text>
+<line x1="88" y1="117" x2="992" y2="117" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="190" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="#d77600" text-anchor="start">01 / SET UP</text>
+<text x="88" y="295" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">Start in</text>
+<text x="88" y="391" font-family="STIX Two Text" font-size="90" font-weight="500" fill="#e8e7e3" text-anchor="start">your project.</text>
+<text x="88" y="471" font-family="STIX Two Text" font-size="35" font-weight="400" fill="#b6b5af" text-anchor="start">Have Node.js, npm, and a model provider ready.</text>
+<g id="shell">
+<rect x="88" y="527" width="904" height="342" fill="#1c1e1d" stroke="#41423e" stroke-width="1.5"/>
+<text x="116" y="567" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="start">SHELL</text>
+<line x1="88" y1="589" x2="992" y2="589" stroke="#41423e" stroke-width="1.5"/>
+<text x="116" y="637" font-family="JetBrains Mono" font-size="29" font-weight="400" fill="#e8e7e3" text-anchor="start">npm install -g --ignore-scripts \</text>
+<text x="116" y="683" font-family="JetBrains Mono" font-size="29" font-weight="400" fill="#e8e7e3" text-anchor="start">  @earendil-works/pi-coding-agent</text>
+<text x="116" y="729" font-family="JetBrains Mono" font-size="29" font-weight="400" fill="#e8e7e3" text-anchor="start"></text>
+<text x="116" y="775" font-family="JetBrains Mono" font-size="29" font-weight="400" fill="#e8e7e3" text-anchor="start">cd /path/to/your/project</text>
+<text x="116" y="821" font-family="JetBrains Mono" font-size="29" font-weight="400" fill="#e8e7e3" text-anchor="start">pi</text>
+</g>
+<g id="inside-pi">
+<rect x="88" y="907" width="904" height="196" fill="#1c1e1d" stroke="#41423e" stroke-width="1.5"/>
+<text x="116" y="947" font-family="JetBrains Mono" font-size="21" font-weight="400" fill="#b6b5af" text-anchor="start">INSIDE PI</text>
+<line x1="88" y1="969" x2="992" y2="969" stroke="#41423e" stroke-width="1.5"/>
+<text x="116" y="1017" font-family="JetBrains Mono" font-size="33" font-weight="400" fill="#e8e7e3" text-anchor="start">/login</text>
+<text x="116" y="1063" font-family="JetBrains Mono" font-size="33" font-weight="400" fill="#e8e7e3" text-anchor="start">/model</text>
+</g>
+<text x="88" y="1171" font-family="STIX Two Text" font-size="35" font-weight="400" fill="#b6b5af" text-anchor="start">Sign in to a provider, then choose a model.</text>
+<text x="88" y="1219" font-family="STIX Two Text" font-size="35" font-weight="400" fill="#b6b5af" text-anchor="start">The directory you launch from is your workspace.</text>
+<g id="footer">
+<line x1="88" y1="1321" x2="992" y2="1321" stroke="#41423e" stroke-width="1.5"/>
+<text x="88" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="start">@juliusdarang</text>
+<text x="992" y="1375" font-family="JetBrains Mono" font-size="23" font-weight="400" fill="#b6b5af" text-anchor="end">03 / 08</text>
+<rect x="438" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="464" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="490" y="1361" width="14" height="3" fill="#d77600"/>
+<rect x="516" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="542" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="568" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="594" y="1361" width="14" height="3" fill="#41423e"/>
+<rect x="620" y="1361" width="14" height="3" fill="#41423e"/>
+</g>
+</svg>
